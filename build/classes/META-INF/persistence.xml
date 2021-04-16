@@ -8,6 +8,18 @@
     <class>doctourna.models.Rdv</class>
     <class>doctourna.models.User</class>
     <class>doctourna.models.Tache</class>
+    <class>doctourna.models.Article</class>
+    <class>doctourna.models.Fiche</class>
+    <class>doctourna.models.Commentaires</class>
+    <class>doctourna.models.Post</class>
+    <class>doctourna.models.Pharmacie</class>
+    <class>doctourna.models.Commande</class>
+    <class>doctourna.models.Reagit</class>
+    <class>doctourna.models.Video</class>
+    <class>doctourna.models.Comment</class>
+    <class>doctourna.models.ArticleCat</class>
+    <class>doctourna.models.Panier</class>
+    <class>doctourna.models.Medicament</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/doctourna?zeroDateTimeBehavior=CONVERT_TO_NULL&amp;serverTimezone=UTC"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

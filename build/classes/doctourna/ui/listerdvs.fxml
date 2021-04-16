@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="548.0" prefWidth="1083.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="doctourna.controllers.ListeRDVsController">
+    <stylesheets>
+        <URL value="@listerdvs.css" />
+    </stylesheets>
+   <children>
+      <JFXTreeTableView fx:id="treTableRDVs" layoutX="20.0" layoutY="107.0" prefHeight="408.0" prefWidth="1038.0" />
+      <Label layoutX="486.0" layoutY="44.0" style="-fx-text-fill: #3faefc; -fx-font-size: 30;" text="Vos RDVs:" />
+   </children>
+</AnchorPane>

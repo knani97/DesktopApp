@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -21,6 +22,7 @@ import java.util.List;
  */
 public class ServiceCalendrier implements IService<Calendrier> {
     Connection connection = DataSource.getInstance().getConnection();
+    ServiceUser su = new ServiceUser();
 
     @Override
     public void ajouter(Calendrier calendrier) {
@@ -90,7 +92,7 @@ public class ServiceCalendrier implements IService<Calendrier> {
             while(rs.next()) {
                 Calendrier calendrier = new Calendrier(
                         rs.getInt("id"), 
-                        new User(rs.getInt("uid_id")), 
+                        su.find(rs.getInt("uid_id")), 
                         rs.getInt("email"), 
                         rs.getBoolean("type"), 
                         rs.getString("couleur"), 
@@ -106,18 +108,18 @@ public class ServiceCalendrier implements IService<Calendrier> {
         return list;
     }
     
-    public Calendrier findByUid(int uid) {
-        String query = "SELECT * FROM calendrier WHERE uid_id=?";
+    public Calendrier find(int id) {
+        String query = "SELECT * FROM calendrier WHERE id=?";
         
         try {
             PreparedStatement ps = connection.prepareStatement(query);
-            ps.setInt(1, uid);
+            ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             while(rs.next()) {
-                if (rs.getInt("uid_id") == uid)
+                if (rs.getInt("id") == id)
                 return new Calendrier(
                         rs.getInt("id"), 
-                        new User(rs.getInt("uid_id")), 
+                        su.find(rs.getInt("uid_id")), 
                         rs.getInt("email"), 
                         rs.getBoolean("type"), 
                         rs.getString("couleur"), 
@@ -130,5 +132,35 @@ public class ServiceCalendrier implements IService<Calendrier> {
             System.err.println(ex.getMessage());
         }
         return null;
+    }
+    
+    public Calendrier findByUid(int uid) {
+        String query = "SELECT * FROM calendrier WHERE uid_id=?";
+        
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setInt(1, uid);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                if (rs.getInt("uid_id") == uid)
+                return new Calendrier(
+                        rs.getInt("id"), 
+                        su.find(rs.getInt("uid_id")), 
+                        rs.getInt("email"), 
+                        rs.getBoolean("type"), 
+                        rs.getString("couleur"), 
+                        rs.getString("timezone"), 
+                        rs.getInt("format")
+                        );
+            }
+        }
+        catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return null;
+    }
+    
+    public List<Calendrier> findByUsername(String username) {
+        return afficher().stream().filter(c -> c.getUidId().toString().toUpperCase().contains(username.toUpperCase())).collect(Collectors.toList());
     }
 }

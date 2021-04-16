@@ -102,10 +102,14 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public User(Integer id, String nom, String prenom, String roles, String password) {
+    public User(Integer id, Cv cvId, String image, Integer type, String nom, String prenom, String email, String roles, String password) {
         this.id = id;
+        this.cvId = cvId;
+        this.image = image;
+        this.type = type;
         this.nom = nom;
         this.prenom = prenom;
+        this.email = email;
         this.roles = roles;
         this.password = password;
     }
@@ -255,7 +259,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "doctourna.models.User[ id=" + id + " ]";
+        return prenom + " " + nom;
     }
 
     @XmlTransient

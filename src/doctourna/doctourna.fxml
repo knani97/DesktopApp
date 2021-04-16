@@ -1,11 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Button layoutX="235.0" layoutY="185.0" mnemonicParsing="false" text="Button" />
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="634.0" prefWidth="1125.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="doctourna.DoctournaController">
+    <stylesheets>
+        <URL value="@doctourna.css" />
+    </stylesheets>
+    <children>
+        <AnchorPane prefHeight="41.0" prefWidth="1125.0" style="-fx-background-color: #ADD8E6;">
+            <children>
+                <JFXButton fx:id="btnCal" layoutX="189.0" onAction="#showCalendrier" prefHeight="60.0" prefWidth="111.0" style="-fx-background-color: #0094fc;" text="Calendrier">
+                    <effect>
+                        <DropShadow />
+                    </effect>
+                </JFXButton>
+                <JFXButton fx:id="btnRdvDispo" layoutX="322.0" onAction="#priseDispo" prefHeight="60.0" prefWidth="111.0" style="-fx-background-color: #0094fc;" text="Prise RDV">
+                    <effect>
+                        <DropShadow />
+                    </effect>
+                </JFXButton>
+                <JFXButton fx:id="btnRdv" layoutX="459.0" onAction="#rdvs" prefHeight="60.0" prefWidth="111.0" style="-fx-background-color: #0094fc;" text="Liste RDVs" />
+                <ImageView fitHeight="60.0" fitWidth="132.0" layoutX="7.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/jimmy-fallon.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+        <Pane fx:id="pneMain" layoutX="1.0" layoutY="75.0" prefHeight="558.0" prefWidth="1125.0">
+            <children>
+                <Label fx:id="lblNoCal" layoutX="413.0" layoutY="200.0" text="Vous n'avez pas encore ajouté un calendrier !" />
+                <JFXButton fx:id="btnAjoutCal" layoutX="482.0" layoutY="264.0" onAction="#ajoutCal" style="-fx-background-color: green;" text="Ajouter un Calendrier" textFill="#fffbfb" />
+            </children>
+        </Pane>
+    </children>
 </AnchorPane>

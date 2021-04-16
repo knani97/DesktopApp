@@ -5,6 +5,8 @@
  */
 package doctourna;
 
+import doctourna.utils.Session;
+import java.nio.file.Paths;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -20,21 +22,22 @@ import javafx.stage.Stage;
  * @author mouhe
  */
 public class DOCTOURNA extends Application {
-    
+
     @Override
     public void start(Stage primaryStage) {
         try {
+            Session.setId(1);
+            Session.setType(1);
+            Session.setEmail("mouheb.benabdallah@esprit.tn");
             Parent root = FXMLLoader.load(getClass().getResource("doctourna.fxml"));
 
-            Scene scene = new Scene(root, 300, 250);
+            Scene scene = new Scene(root, 1125, 800);
 
             primaryStage.setTitle("DOCTOURNA");
             primaryStage.setScene(scene);
             primaryStage.show();
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-            e.getCause();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 
@@ -44,5 +47,5 @@ public class DOCTOURNA extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }

@@ -34,14 +34,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "tache")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Tache_1.findAll", query = "SELECT t FROM Tache_1 t"),
-    @NamedQuery(name = "Tache_1.findById", query = "SELECT t FROM Tache_1 t WHERE t.id = :id"),
-    @NamedQuery(name = "Tache_1.findByLibelle", query = "SELECT t FROM Tache_1 t WHERE t.libelle = :libelle"),
-    @NamedQuery(name = "Tache_1.findByDescription", query = "SELECT t FROM Tache_1 t WHERE t.description = :description"),
-    @NamedQuery(name = "Tache_1.findByType", query = "SELECT t FROM Tache_1 t WHERE t.type = :type"),
-    @NamedQuery(name = "Tache_1.findByCouleur", query = "SELECT t FROM Tache_1 t WHERE t.couleur = :couleur"),
-    @NamedQuery(name = "Tache_1.findByDate", query = "SELECT t FROM Tache_1 t WHERE t.date = :date"),
-    @NamedQuery(name = "Tache_1.findByDuree", query = "SELECT t FROM Tache_1 t WHERE t.duree = :duree")})
+    @NamedQuery(name = "Tache.findAll", query = "SELECT t FROM Tache_1 t"),
+    @NamedQuery(name = "Tache.findById", query = "SELECT t FROM Tache_1 t WHERE t.id = :id"),
+    @NamedQuery(name = "Tache.findByLibelle", query = "SELECT t FROM Tache_1 t WHERE t.libelle = :libelle"),
+    @NamedQuery(name = "Tache.findByDescription", query = "SELECT t FROM Tache_1 t WHERE t.description = :description"),
+    @NamedQuery(name = "Tache.findByType", query = "SELECT t FROM Tache_1 t WHERE t.type = :type"),
+    @NamedQuery(name = "Tache.findByCouleur", query = "SELECT t FROM Tache_1 t WHERE t.couleur = :couleur"),
+    @NamedQuery(name = "Tache.findByDate", query = "SELECT t FROM Tache_1 t WHERE t.date = :date"),
+    @NamedQuery(name = "Tache.findByDuree", query = "SELECT t FROM Tache_1 t WHERE t.duree = :duree")})
 public class Tache implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -207,7 +207,7 @@ public class Tache implements Serializable {
 
     @Override
     public String toString() {
-        return "doctourna.models.Tache_1[ id=" + id + " ]";
+        return date.toString() + " " + libelle + " (" + type + ")";
     }
     
 }

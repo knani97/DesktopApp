@@ -22,7 +22,7 @@
          <children>
             <ImageView fitHeight="78.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/jimmy-fallon.png" />
+                  <Image url="@../../images/jimmy-fallon.png" />
                </image>
                <VBox.margin>
                   <Insets bottom="10.0" top="50.0" />

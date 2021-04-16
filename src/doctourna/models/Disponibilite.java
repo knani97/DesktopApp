@@ -66,11 +66,12 @@ public class Disponibilite implements Serializable {
         this.id = id;
     }
 
-    public Disponibilite(Integer id, Timestamp startDate, Timestamp endDate, Time dureeRdv) {
+    public Disponibilite(Integer id, Timestamp startDate, Timestamp endDate, Time dureeRdv, Time dureePause) {
         this.id = id;
         this.startDate = startDate;
         this.endDate = endDate;
         this.dureeRdv = dureeRdv;
+        this.dureePause = dureePause;
     }
 
     public Integer getId() {

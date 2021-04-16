@@ -6,6 +6,7 @@
 package doctourna.models;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -48,7 +49,7 @@ public class Rdv implements Serializable {
     @Basic(optional = false)
     @Column(name = "date")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date date;
+    private Timestamp date;
     @Basic(optional = false)
     @Column(name = "etat")
     private int etat;
@@ -76,10 +77,22 @@ public class Rdv implements Serializable {
         this.id = id;
     }
 
-    public Rdv(Integer id, Date date, int etat) {
+    public Rdv(Integer id, Timestamp date, int etat) {
         this.id = id;
         this.date = date;
         this.etat = etat;
+    }
+
+    public Rdv(Integer id, Timestamp date, int etat, String description, String jointure, Tache tacheDispoId, User medecinId, User patientId, Tache tacheUserId) {
+        this.id = id;
+        this.date = date;
+        this.etat = etat;
+        this.description = description;
+        this.jointure = jointure;
+        this.tacheDispoId = tacheDispoId;
+        this.medecinId = medecinId;
+        this.patientId = patientId;
+        this.tacheUserId = tacheUserId;
     }
 
     public Integer getId() {
@@ -90,11 +103,11 @@ public class Rdv implements Serializable {
         this.id = id;
     }
 
-    public Date getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 
