@@ -55,7 +55,7 @@ public class Console {
     public static void changeColor(String color) {
         System.out.println(color);
     }
-    
+
     public static void clear() {
         try {
             new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
@@ -112,11 +112,13 @@ public class Console {
     }
 
     public static void showTimezones() {
-        for (Integer i = 14; i > 0; i--)
+        for (Integer i = 14; i > 0; i--) {
             System.out.println("UTC-" + i.toString());
+        }
         System.out.println("UTC");
-        for (Integer i = 1; i < 15; i++)
+        for (Integer i = 1; i < 15; i++) {
             System.out.println("UTC+" + i.toString());
+        }
     }
 
     public static String getEtat(int etat) {
@@ -131,6 +133,28 @@ public class Console {
                 return "Terminé";
             default:
                 return "Erreur";
+        }
+    }
+
+    public static Integer getType(String etat) {
+        switch (etat) {
+            case "1":
+            case "RDV":
+                return 1;
+            case "2":
+            case "Prise Médicament":
+                return 2;
+            case "3":
+            case "Personnelle":
+                return 3;
+            case "4":
+            case "Disponibilité":
+                return 4;
+            case "5":
+            case "RDV Perso-":
+                return 5;
+            default:
+                return -1;
         }
     }
 
@@ -195,8 +219,7 @@ public class Console {
             if (input.contains("?")) {
                 showColors();
                 pass = false;
-            }
-            else if (isColor(input)) {
+            } else if (isColor(input)) {
                 calendrier.setCouleur(input);
                 pass = true;
             } else {
@@ -211,8 +234,7 @@ public class Console {
             if (input.contains("?")) {
                 showTimezones();
                 pass = false;
-            }
-            else if (isTimezone(input)) {
+            } else if (isTimezone(input)) {
                 calendrier.setTimezone(input);
                 pass = true;
             } else {
@@ -262,8 +284,7 @@ public class Console {
             if (input.contains("?")) {
                 showColors();
                 pass = false;
-            }
-            else if (isColor(input)) {
+            } else if (isColor(input)) {
                 tache.setCouleur(input);
                 pass = true;
             } else {

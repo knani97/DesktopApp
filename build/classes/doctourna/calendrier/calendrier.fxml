@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="604.0" prefWidth="1062.0" stylesheets="@../ui/calendrier.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="doctourna.calendrier.CalendrierController">
+   <children>
+      <Label fx:id="lblNoCal" layoutX="386.0" layoutY="247.0" style="-fx-font-family: Snowy Night;" text="Vous n'avez pas encore ajouté un calendrier" />
+      <JFXButton fx:id="btnAjoutCal" layoutX="461.0" layoutY="302.0" onAction="#ajoutCal" style="-fx-background-color: green;" text="Ajouter Calendrier" textFill="WHITE" />
+   </children>
+</Pane>

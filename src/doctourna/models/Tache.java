@@ -30,51 +30,26 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  * @author mouhe
  */
-@Entity
-@Table(name = "tache")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Tache.findAll", query = "SELECT t FROM Tache_1 t"),
-    @NamedQuery(name = "Tache.findById", query = "SELECT t FROM Tache_1 t WHERE t.id = :id"),
-    @NamedQuery(name = "Tache.findByLibelle", query = "SELECT t FROM Tache_1 t WHERE t.libelle = :libelle"),
-    @NamedQuery(name = "Tache.findByDescription", query = "SELECT t FROM Tache_1 t WHERE t.description = :description"),
-    @NamedQuery(name = "Tache.findByType", query = "SELECT t FROM Tache_1 t WHERE t.type = :type"),
-    @NamedQuery(name = "Tache.findByCouleur", query = "SELECT t FROM Tache_1 t WHERE t.couleur = :couleur"),
-    @NamedQuery(name = "Tache.findByDate", query = "SELECT t FROM Tache_1 t WHERE t.date = :date"),
-    @NamedQuery(name = "Tache.findByDuree", query = "SELECT t FROM Tache_1 t WHERE t.duree = :duree")})
-public class Tache implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
+public class Tache {
+    
     private Integer id;
-    @Basic(optional = false)
-    @Column(name = "libelle")
+
     private String libelle;
-    @Column(name = "description")
+
     private String description;
-    @Basic(optional = false)
-    @Column(name = "type")
+
     private String type;
-    @Basic(optional = false)
-    @Column(name = "couleur")
+
     private String couleur;
-    @Basic(optional = false)
-    @Column(name = "date")
-    @Temporal(TemporalType.TIMESTAMP)
+
     private Timestamp date;
-    @Basic(optional = false)
-    @Column(name = "duree")
-    @Temporal(TemporalType.TIME)
+
     private Time duree;
-    @JoinColumn(name = "calendrier", referencedColumnName = "id")
-    @ManyToOne
+
     private Calendrier calendrier;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "tacheDispoId")
+
     private Rdv rdv;
-    @OneToOne(mappedBy = "tacheUserId")
+
     private Rdv rdv1;
 
     public Tache() {

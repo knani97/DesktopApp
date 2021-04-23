@@ -25,9 +25,18 @@ import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -40,6 +49,42 @@ public class AjoutDispoController implements Initializable {
     ServiceCalendrier sc = new ServiceCalendrier();
     int uid = Session.getId();
     int type = Session.getType();
+    
+    @FXML
+    private Pane bgbtnmenu;
+
+    @FXML
+    private Button btnNews;
+
+    @FXML
+    private Pane BoxUserConnect;
+
+    @FXML
+    private Pane BoxUserWhiteConnect;
+
+    @FXML
+    private Label lblUsername;
+
+    @FXML
+    private Button PanierBtn;
+
+    @FXML
+    private ImageView Panier;
+
+    @FXML
+    private MenuButton NotificationBtn;
+
+    @FXML
+    private ImageView Notification;
+
+    @FXML
+    private Button btnRDVs;
+
+    @FXML
+    private Pane boxAjoutArticle;
+
+    @FXML
+    private Button btnClick;
 
     @FXML
     private JFXDatePicker dteDateDebut;
@@ -54,13 +99,13 @@ public class AjoutDispoController implements Initializable {
     private JFXDatePicker dteDateFin;
 
     @FXML
-    private Button btnClick;
-
-    @FXML
     private JFXTextField txtFldDureeRDV;
 
     @FXML
     private JFXTextField txtFldDureePause;
+    
+    @FXML
+    private Button btnPriseRDV;
 
     @FXML
     void display(ActionEvent event) {
@@ -98,6 +143,51 @@ public class AjoutDispoController implements Initializable {
                 + "Durée RDV: " + txtFldDureeRDV.getText());
 
         alert.showAndWait();
+    }
+    
+    @FXML
+    void priseRDV(ActionEvent event) {
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+            Scene scene = stage.getScene();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../ui/priserdv.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+
+            scene.setRoot(root);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    @FXML
+    void rdvsDisplay(ActionEvent event) {
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+            Scene scene = stage.getScene();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../ui/listerdvs.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+
+            scene.setRoot(root);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    @FXML
+    void navCal(ActionEvent event) {
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+            Scene scene = stage.getScene();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../ui/modifcalendrier.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+
+            scene.setRoot(root);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**

@@ -6,6 +6,7 @@
 package doctourna.controllers;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXListView;
@@ -28,15 +29,26 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -53,16 +65,81 @@ public class PriseRDVController implements Initializable {
     String email = "mouheb.benabdallah@esprit.tn";
 
     @FXML
+    private Pane bgbtnmenu;
+
+    @FXML
+    private Button btnNews;
+
+    @FXML
+    private Pane BoxUserConnect;
+
+    @FXML
+    private Pane BoxUserWhiteConnect;
+
+    @FXML
+    private Label lblUsername;
+
+    @FXML
+    private Button PanierBtn;
+
+    @FXML
+    private ImageView Panier;
+
+    @FXML
+    private MenuButton NotificationBtn;
+
+    @FXML
+    private ImageView Notification;
+
+    @FXML
+    private Button btnRDVs;
+
+    @FXML
+    private Pane boxAjoutArticle;
+
+    @FXML
+    private Button btnClick;
+
+    @FXML
     private JFXListView<User> lstViewMed;
 
     @FXML
-    private ChoiceBox<Tache> chcBoxDate;
+    private ComboBox<Tache> chcBoxDate;
 
     @FXML
     private JFXTextArea txtAreaDesc;
 
     @FXML
-    private JFXButton btnClick;
+    private Button btnPriseRDV;
+    
+    @FXML
+    private JFXCheckBox chcBox1;
+    
+    @FXML
+    private JFXCheckBox chcBox2;
+    
+    @FXML
+    private JFXCheckBox chcBox3;
+    
+    @FXML
+    private JFXCheckBox chcBox4;
+    
+    @FXML
+    void resetMeds(ActionEvent event) {
+        lstViewMed.getItems().clear();
+        if (chcBox1.isSelected()) {
+            su.rechercherMedecinsSpec("Psychiatre").forEach(m -> lstViewMed.getItems().add(m));
+        }
+        if (chcBox2.isSelected()) {
+            su.rechercherMedecinsSpec("Chirirugien").forEach(m -> lstViewMed.getItems().add(m));
+        }
+        if (chcBox3.isSelected()) {
+            su.rechercherMedecinsSpec("Cardiologue").forEach(m -> lstViewMed.getItems().add(m));
+        }
+        if (chcBox4.isSelected()) {
+            su.rechercherMedecinsSpec("Dermatologue").forEach(m -> lstViewMed.getItems().add(m));
+        }
+    }
 
     @FXML
     void display(ActionEvent event) {
@@ -103,7 +180,53 @@ public class PriseRDVController implements Initializable {
         }
     }
 
+    @FXML
+    void priseRDV(ActionEvent event) {
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+            Scene scene = stage.getScene();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../ui/ajoutdispo.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+
+            scene.setRoot(root);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    @FXML
+    void rdvsDisplay(ActionEvent event) {
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+            Scene scene = stage.getScene();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../ui/listerdvs.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+
+            scene.setRoot(root);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    @FXML
+    void navCal(ActionEvent event) {
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+            Scene scene = stage.getScene();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../ui/modifcalendrier.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+
+            scene.setRoot(root);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
     public void reset() {
+        chcBoxDate.getItems().clear();
         st.findDispos(sc.findByUid(lstViewMed.getSelectionModel().getSelectedItem().getId()).getId()).stream().filter(d -> d.getDate().after(new Timestamp(System.currentTimeMillis()))).forEach(t -> chcBoxDate.getItems().add(t));
     }
 
@@ -120,6 +243,12 @@ public class PriseRDVController implements Initializable {
             }
         });
         su.rechercherMedecins().forEach(m -> lstViewMed.getItems().add(m));
+        lstViewMed.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<User>() {
+            @Override
+            public void changed(ObservableValue<? extends User> observable, User oldValue, User newValue) {
+                reset();
+            }
+        });
     }
 
 }

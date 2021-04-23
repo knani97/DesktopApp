@@ -22,6 +22,12 @@ import javafx.stage.Stage;
  * @author mouhe
  */
 public class DOCTOURNA extends Application {
+    
+    public static Stage primaryStage2;
+    
+    public static Stage getPrimaryStage() {
+        return primaryStage2;
+    }
 
     @Override
     public void start(Stage primaryStage) {
@@ -29,13 +35,17 @@ public class DOCTOURNA extends Application {
             Session.setId(1);
             Session.setType(1);
             Session.setEmail("mouheb.benabdallah@esprit.tn");
-            Parent root = FXMLLoader.load(getClass().getResource("doctourna.fxml"));
+            Session.setNom("Hammami");
+            Session.setPrenom("Mongi");
+            Parent root = FXMLLoader.load(getClass().getResource("ui/ajoutcalendrier.fxml"));
 
-            Scene scene = new Scene(root, 1125, 800);
+            Scene scene = new Scene(root, 1300, 750);
 
             primaryStage.setTitle("DOCTOURNA");
             primaryStage.setScene(scene);
             primaryStage.show();
+            
+            primaryStage2 = primaryStage;
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

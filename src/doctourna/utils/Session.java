@@ -13,6 +13,8 @@ public class Session {
     private static int id;
     private static int type;
     private static String email;
+    private static String nom;
+    private static String prenom;
 
     public static int getId() {
         return id;
@@ -36,5 +38,21 @@ public class Session {
 
     public static void setEmail(String email) {
         Session.email = email;
+    }
+
+    public static String getNom() {
+        return nom;
+    }
+
+    public static void setNom(String nom) {
+        Session.nom = nom;
+    }
+
+    public static String getPrenom() {
+        return prenom;
+    }
+
+    public static void setPrenom(String prenom) {
+        Session.prenom = prenom;
     }
 }

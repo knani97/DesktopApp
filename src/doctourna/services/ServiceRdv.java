@@ -217,4 +217,11 @@ public class ServiceRdv implements IService<Rdv> {
         return afficher().stream().filter(r -> r.getPatientId().getId() == patient_id && r.getMedecinId().getId() == medecin_id).collect(Collectors.toList());
     }
     
+    public List<Rdv> rechercherNom(String nom) {
+        return afficher().stream().filter(r -> r.getPatientId().getNom().contains(nom) || r.getMedecinId().getNom().contains(nom)).collect(Collectors.toList());
+    }
+    
+    public List<Rdv> triDate(int uid) {
+        return findByUid(uid).stream().sorted((r1, r2) -> r1.getDate().before(r2.getDate()) ? 1 : -1).collect(Collectors.toList());
+    }
 }

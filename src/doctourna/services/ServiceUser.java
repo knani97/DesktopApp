@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
  */
 public class ServiceUser implements IService<User> {
     Connection connection = DataSource.getInstance().getConnection();
+    ServiceCv scv = new ServiceCv();
     
     @Override
     public void ajouter(User t) {
@@ -49,7 +50,7 @@ public class ServiceUser implements IService<User> {
             while(rs.next()) {
                 list.add(new User(
                         rs.getInt("id"), 
-                        new Cv(rs.getInt("cv_id")), 
+                        scv.find(rs.getInt("cv_id")), 
                         rs.getString("image"), 
                         rs.getInt("type"), 
                         rs.getString("nom"), 
@@ -78,7 +79,7 @@ public class ServiceUser implements IService<User> {
                 if (rs.getInt("id") == id)
                 return new User(
                         rs.getInt("id"), 
-                        new Cv(rs.getInt("cv_id")), 
+                        scv.find(rs.getInt("cv_id")), 
                         rs.getString("image"), 
                         rs.getInt("type"), 
                         rs.getString("nom"), 
@@ -99,4 +100,7 @@ public class ServiceUser implements IService<User> {
         return afficher().stream().filter(u -> u.getType() == 2).collect(Collectors.toList());
     }
     
+    public List<User> rechercherMedecinsSpec(String spec) {
+        return rechercherMedecins().stream().filter(u -> u.getCvId().getSpecialite().contains(spec)).collect(Collectors.toList());
+    }
 }

@@ -3,27 +3,215 @@
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTimePicker?>
-<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="506.0" prefWidth="817.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="doctourna.controllers.AjoutDispoController">
-    <stylesheets>
-        <URL value="@ajoutdispo.css" />
-    </stylesheets>
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #F5F5F5;" stylesheets="@../doctourna.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="doctourna.controllers.AjoutDispoController">
    <children>
-      <Label layoutX="243.0" layoutY="36.0" style="-fx-font-size: 30; -fx-text-fill: #056ef7;" text="Ajout des disponibilités" />
-      <Label layoutX="204.0" layoutY="180.0" text="Date début" />
-      <Label layoutX="205.0" layoutY="231.0" text="Date fin" />
-      <Label layoutX="205.0" layoutY="283.0" text="Durée RDV" />
-      <Label layoutX="205.0" layoutY="342.0" text="Durée pause" />
-      <JFXDatePicker fx:id="dteDateDebut" defaultColor="#003d91" layoutX="305.0" layoutY="164.0" prefHeight="31.0" prefWidth="142.0" />
-      <JFXTimePicker fx:id="tmeDateDebut" defaultColor="#00338f" layoutX="474.0" layoutY="164.0" prefHeight="31.0" prefWidth="106.0" />
-      <JFXTimePicker fx:id="tmeDateFin" defaultColor="#8f0000" layoutX="474.0" layoutY="216.0" prefHeight="31.0" prefWidth="106.0" />
-      <JFXDatePicker fx:id="dteDateFin" defaultColor="#940000" layoutX="305.0" layoutY="216.0" prefHeight="31.0" prefWidth="142.0" />
-      <Button fx:id="btnClick" layoutX="376.0" layoutY="426.0" mnemonicParsing="false" onAction="#display" prefHeight="31.0" prefWidth="92.0" style="-fx-background-color: green;" text="Ajouter" textFill="WHITE" />
-      <JFXTextField fx:id="txtFldDureeRDV" layoutX="305.0" layoutY="268.0" prefHeight="31.0" prefWidth="142.0" text="00:30:00" />
-      <JFXTextField fx:id="txtFldDureePause" layoutX="305.0" layoutY="327.0" prefHeight="31.0" prefWidth="142.0" text="00:00:00" />
+      <AnchorPane prefHeight="720.0" prefWidth="91.0" style="-fx-background-color: white; -fx-background-radius: 0 48 30 0;">
+         <children>
+            <VBox layoutY="113.0" prefHeight="516.0" prefWidth="100.0">
+               <children>
+                  <Pane prefHeight="81.0" prefWidth="90.0" style="-fx-background-color: white;">
+                     <children>
+                        <Button layoutX="14.0" layoutY="9.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="63.0" style="-fx-background-color: white; -fx-effect: none;">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../images/article_white_24dp.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Pane>
+                  <Pane prefHeight="81.0" prefWidth="93.0" style="-fx-background-color: white;">
+                     <VBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </VBox.margin>
+                     <children>
+                        <Button layoutX="14.0" layoutY="9.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="63.0" style="-fx-background-color: white; -fx-effect: none;">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../images/article_white_24dp.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="81.0" prefWidth="93.0" style="-fx-background-color: white;">
+                     <children>
+                        <Button layoutX="14.0" layoutY="9.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="63.0" style="-fx-background-color: white; -fx-effect: none;">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../images/article_white_24dp.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Pane>
+                  <Pane fx:id="bgbtnmenu" prefHeight="81.0" prefWidth="93.0" style="-fx-background-color: #F5F5F5; -fx-background-radius: 18 0 0 18;" styleClass="bgbtnmenu">
+                     <VBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </VBox.margin>
+                     <children>
+                        <Button fx:id="btnNews" layoutX="14.0" layoutY="9.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="63.0" style="-fx-background-color: #4A90E2; -fx-background-radius: 8;" styleClass="btnNews">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../images/outline_article_white_24dp.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="navCal" prefHeight="81.0" prefWidth="93.0" style="-fx-background-color: white;">
+                     <children>
+                        <Button layoutX="14.0" layoutY="9.0" mnemonicParsing="false" onAction="#navCal" prefHeight="63.0" prefWidth="63.0" style="-fx-background-color: white; -fx-effect: none;">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../images/article_white_24dp.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Pane>
+               </children>
+            </VBox>
+            <Pane layoutY="639.0" prefHeight="81.0" prefWidth="100.0" style="-fx-background-color: #4A90E2; -fx-background-radius: 0 0 30 0;">
+               <children>
+                  <Pane layoutX="14.0" layoutY="4.0" prefHeight="73.0" prefWidth="73.0" style="-fx-background-color: white; -fx-background-radius: 100;" styleClass="BoxUserWhiteConnect" />
+                  <Pane layoutX="22.0" layoutY="12.0" prefHeight="57.0" prefWidth="57.0" style="-fx-background-color: gray; -fx-background-radius: 100;">
+                     <children>
+                        <ImageView fitHeight="63.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../images/outline_account_circle_white_24dp.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <ImageView fitHeight="42.0" fitWidth="81.0" layoutX="10.0" layoutY="26.0">
+               <image>
+                  <Image url="@../../images/logodoc.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="100.0" layoutY="14.0" prefHeight="81.0" prefWidth="1163.0">
+         <children>
+            <Pane fx:id="BoxUserConnect" layoutX="987.0" layoutY="18.0" prefHeight="46.0" prefWidth="175.0" style="-fx-background-color: #4A90E2; -fx-background-radius: 100;" styleClass="BoxUserConnect">
+               <children>
+                  <Pane fx:id="BoxUserWhiteConnect" layoutX="4.0" layoutY="3.0" prefHeight="41.0" prefWidth="41.0" style="-fx-background-color: white; -fx-background-radius: 100;" styleClass="BoxUserWhiteConnect" />
+                  <Pane layoutX="7.0" layoutY="6.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #4A90E2; -fx-background-radius: 100;">
+                     <children>
+                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../images/icons8_Person_32px.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Label fx:id="lblUsername" layoutX="51.0" layoutY="12.0" text="Hammami Mongi" textFill="WHITE" />
+               </children>
+            </Pane>
+            <TextField layoutX="21.0" layoutY="25.0" prefHeight="41.0" prefWidth="324.0" promptText="Chercher dans doctourna" style="-fx-background-radius: 11 11 11 11; -fx-background-color: #EEEEEE;" />
+            <Button fx:id="PanierBtn" layoutX="914.0" layoutY="20.0" maxHeight="42.0" maxWidth="41.0" minWidth="41.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="41.0" style="-fx-background-color: white; -fx-background-radius: 11;" styleClass="PanierBtn">
+               <graphic>
+                  <ImageView fx:id="Panier" fitHeight="19.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/outline_article_black_24dp.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <MenuButton fx:id="NotificationBtn" layoutX="842.0" layoutY="20.0" maxHeight="42.0" maxWidth="42.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-background-color: #4A90E2; -fx-background-radius: 11;" styleClass="NotificationBtn" textFill="WHITE">
+              <items>
+                <MenuItem mnemonicParsing="false" style="-fx-background-color: #4A90E2;">
+                     <graphic>
+                        <Label style="-fx-background-color: #4A90E2;" text="Mongi Hammami a piublier un nouveau article" textFill="WHITE">
+                           <font>
+                              <Font name="Roboto Light" size="15.0" />
+                           </font>
+                        </Label>
+                     </graphic>
+                  </MenuItem>
+              </items>
+               <graphic>
+                  <ImageView fx:id="Notification" fitHeight="19.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/outline_article_white_24dp.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </MenuButton>
+            
+        
+         </children></AnchorPane>
+      <Line endX="-36.0" layoutX="230.0" layoutY="135.0" startX="-103.0" stroke="LIGHTGRAY" strokeWidth="2.0" />
+      <Button fx:id="btnRDVs" layoutX="119.0" layoutY="101.0" mnemonicParsing="false" onAction="#rdvsDisplay" style="-fx-background-color: transparent; -fx-text-fill: #AFAFAF; -fx-font-size: 14; -fx-effect: null;" text="Liste RDVs" />
+      <Text fill="WHITE" layoutX="1021.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="107.98307228088379" />
+      <Pane fx:id="boxAjoutArticle" layoutX="126.0" layoutY="153.0" prefHeight="495.0" prefWidth="1138.0" style="-fx-background-color: white; -fx-background-radius: 8;" styleClass="boxAjoutArticle">
+         <children>
+            <Pane prefHeight="81.0" prefWidth="1138.0" style="-fx-background-color: #4A90E2; -fx-background-radius: 8 8 0px 0;">
+               <children>
+                  <Text fill="WHITE" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-style: toUpperCase;" text="AJOUT DES DISPONIBILITES" textAlignment="CENTER" wrappingWidth="1138.0000305175781">
+                     <font>
+                        <Font name="Roboto Medium" size="27.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Button fx:id="btnClick" layoutX="895.0" layoutY="420.0" mnemonicParsing="false" onAction="#display" prefHeight="41.0" prefWidth="216.0" style="-fx-background-radius: 8; -fx-background-color: #4A90E2;" text="Ajouter" textFill="WHITE">
+               <font>
+                  <Font name="Roboto Black" size="15.0" />
+               </font></Button>
+            <JFXDatePicker fx:id="dteDateDebut" defaultColor="#003d91" layoutX="189.0" layoutY="129.0" prefHeight="31.0" prefWidth="139.0" />
+            <JFXTimePicker fx:id="tmeDateDebut" defaultColor="#003d91" layoutX="328.0" layoutY="130.0" prefHeight="31.0" prefWidth="126.0" />
+            <Label layoutX="87.0" layoutY="136.0" text="Date Début :" />
+            <JFXDatePicker fx:id="dteDateFin" defaultColor="#940000" layoutX="660.0" layoutY="128.0" prefHeight="31.0" prefWidth="139.0" />
+            <JFXTimePicker fx:id="tmeDateFin" defaultColor="#940000" layoutX="799.0" layoutY="129.0" prefHeight="31.0" prefWidth="126.0" />
+            <Label layoutX="558.0" layoutY="135.0" text="Date Fin : " />
+            <Label layoutX="88.0" layoutY="238.0" text="Durée RDV :" />
+            <JFXTextField fx:id="txtFldDureeRDV" layoutX="189.0" layoutY="232.0" text="00:30:00" />
+            <Label layoutX="546.0" layoutY="238.0" text="Durée Pause :" />
+            <JFXTextField fx:id="txtFldDureePause" layoutX="659.0" layoutY="232.0" text="00:00:00" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="184.0" layoutY="331.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/dispo.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Button fx:id="btnPriseRDV" layoutX="210.0" layoutY="101.0" mnemonicParsing="false" onAction="#priseRDV" style="-fx-background-color: transparent; -fx-text-fill: #468ada; -fx-font-size: 14; -fx-effect: null;" text="Ajout Dispos" />
+      <Line endX="-31.0" layoutX="325.0" layoutY="135.0" startX="-105.0" stroke="#468ada" strokeWidth="2.0" />
    </children>
 </AnchorPane>

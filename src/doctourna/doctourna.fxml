@@ -2,7 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import java.net.URL?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -34,11 +33,6 @@
                 </ImageView>
             </children>
         </AnchorPane>
-        <Pane fx:id="pneMain" layoutX="1.0" layoutY="75.0" prefHeight="558.0" prefWidth="1125.0">
-            <children>
-                <Label fx:id="lblNoCal" layoutX="413.0" layoutY="200.0" text="Vous n'avez pas encore ajouté un calendrier !" />
-                <JFXButton fx:id="btnAjoutCal" layoutX="482.0" layoutY="264.0" onAction="#ajoutCal" style="-fx-background-color: green;" text="Ajouter un Calendrier" textFill="#fffbfb" />
-            </children>
-        </Pane>
+        <Pane fx:id="pneMain" layoutX="1.0" layoutY="75.0" prefHeight="558.0" prefWidth="1125.0" />
     </children>
 </AnchorPane>

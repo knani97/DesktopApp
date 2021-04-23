@@ -28,46 +28,25 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  * @author mouhe
  */
-@Entity
-@Table(name = "rdv")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Rdv.findAll", query = "SELECT r FROM Rdv r"),
-    @NamedQuery(name = "Rdv.findById", query = "SELECT r FROM Rdv r WHERE r.id = :id"),
-    @NamedQuery(name = "Rdv.findByDate", query = "SELECT r FROM Rdv r WHERE r.date = :date"),
-    @NamedQuery(name = "Rdv.findByEtat", query = "SELECT r FROM Rdv r WHERE r.etat = :etat"),
-    @NamedQuery(name = "Rdv.findByDescription", query = "SELECT r FROM Rdv r WHERE r.description = :description"),
-    @NamedQuery(name = "Rdv.findByJointure", query = "SELECT r FROM Rdv r WHERE r.jointure = :jointure")})
-public class Rdv implements Serializable {
+public class Rdv {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
+    
     private Integer id;
-    @Basic(optional = false)
-    @Column(name = "date")
-    @Temporal(TemporalType.TIMESTAMP)
+    
     private Timestamp date;
-    @Basic(optional = false)
-    @Column(name = "etat")
+    
     private int etat;
-    @Column(name = "description")
+    
     private String description;
-    @Column(name = "jointure")
+    
     private String jointure;
-    @JoinColumn(name = "tache_dispo_id", referencedColumnName = "id")
-    @OneToOne(optional = false)
+
     private Tache tacheDispoId;
-    @JoinColumn(name = "medecin_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+
     private User medecinId;
-    @JoinColumn(name = "patient_id", referencedColumnName = "id")
-    @ManyToOne
+
     private User patientId;
-    @JoinColumn(name = "tache_user_id", referencedColumnName = "id")
-    @OneToOne
+
     private Tache tacheUserId;
 
     public Rdv() {

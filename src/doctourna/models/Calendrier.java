@@ -26,44 +26,20 @@ import javax.xml.bind.annotation.XmlTransient;
  *
  * @author mouhe
  */
-@Entity
-@Table(name = "calendrier")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Calendrier_1.findAll", query = "SELECT c FROM Calendrier_1 c"),
-    @NamedQuery(name = "Calendrier_1.findById", query = "SELECT c FROM Calendrier_1 c WHERE c.id = :id"),
-    @NamedQuery(name = "Calendrier_1.findByType", query = "SELECT c FROM Calendrier_1 c WHERE c.type = :type"),
-    @NamedQuery(name = "Calendrier_1.findByEmail", query = "SELECT c FROM Calendrier_1 c WHERE c.email = :email"),
-    @NamedQuery(name = "Calendrier_1.findByCouleur", query = "SELECT c FROM Calendrier_1 c WHERE c.couleur = :couleur"),
-    @NamedQuery(name = "Calendrier_1.findByTimezone", query = "SELECT c FROM Calendrier_1 c WHERE c.timezone = :timezone"),
-    @NamedQuery(name = "Calendrier_1.findByFormat", query = "SELECT c FROM Calendrier_1 c WHERE c.format = :format")})
-public class Calendrier implements Serializable {
+public class Calendrier {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
-    @Column(name = "type")
+
     private int type;
-    @Basic(optional = false)
-    @Column(name = "email")
+
     private boolean email;
-    @Basic(optional = false)
-    @Column(name = "couleur")
+
     private String couleur;
-    @Basic(optional = false)
-    @Column(name = "timezone")
+ 
     private String timezone;
-    @Basic(optional = false)
-    @Column(name = "format")
+
     private int format;
-    @OneToMany(mappedBy = "calendrier")
-    private Collection<Tache> tacheCollection;
-    @JoinColumn(name = "uid_id", referencedColumnName = "id")
-    @ManyToOne
+
     private User uidId;
 
     public Calendrier() {
@@ -138,15 +114,6 @@ public class Calendrier implements Serializable {
 
     public void setFormat(int format) {
         this.format = format;
-    }
-
-    @XmlTransient
-    public Collection<Tache> getTacheCollection() {
-        return tacheCollection;
-    }
-
-    public void setTacheCollection(Collection<Tache> tacheCollection) {
-        this.tacheCollection = tacheCollection;
     }
 
     public User getUidId() {

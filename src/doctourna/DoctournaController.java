@@ -37,15 +37,9 @@ public class DoctournaController implements Initializable {
     private JFXButton btnRdv;
 
     @FXML
-    private Pane pneMain;    
-    
-    @FXML
-    private Label lblNoCal;
-    
-    @FXML
-    private JFXButton btnAjoutCal;
+    private Pane pneMain;
 
-    int uid = Session.getId();
+    Integer uid = Session.getId();
     int type = Session.getType();
     ServiceCalendrier sc = new ServiceCalendrier();
 
@@ -80,19 +74,14 @@ public class DoctournaController implements Initializable {
     void showCalendrier(ActionEvent event) {
         pneMain.getChildren().clear();
         try {
-            Pane newLoadedPane = FXMLLoader.load(getClass().getResource("ui/plagehoraire.fxml"));
-            pneMain.getChildren().add(newLoadedPane);
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-    
-    @FXML
-    void ajoutCal(ActionEvent event) {
-        pneMain.getChildren().clear();
-        try {
-            Pane newLoadedPane = FXMLLoader.load(getClass().getResource("ui/ajoutcalendrier.fxml"));
-            pneMain.getChildren().add(newLoadedPane);
+            if (sc.findByUid(uid) == null) {
+                Pane newLoadedPane = FXMLLoader.load(getClass().getResource("calendrier/calendrier.fxml"));
+                pneMain.getChildren().add(newLoadedPane);
+            }
+            else {
+                Pane newLoadedPane = FXMLLoader.load(getClass().getResource("ui/plagehoraire.fxml"));
+                pneMain.getChildren().add(newLoadedPane);
+            }
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
@@ -106,16 +95,9 @@ public class DoctournaController implements Initializable {
             btnRdvDispo.setText("Config Dispos");
         }
         if (sc.findByUid(uid) != null) {
-            lblNoCal.setVisible(false);
-            btnAjoutCal.setVisible(false);
-            btnCal.setDisable(false);
             btnRdvDispo.setDisable(false);
             btnRdv.setDisable(false);
-        }
-        else {
-            lblNoCal.setVisible(true);
-            btnAjoutCal.setVisible(true);
-            btnCal.setDisable(true);
+        } else {
             btnRdvDispo.setDisable(true);
             btnRdv.setDisable(true);
         }
