@@ -56,6 +56,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import org.controlsfx.control.Notifications;
+import org.controlsfx.control.PopOver;
 
 /**
  * FXML Controller class
@@ -70,13 +72,15 @@ public class ListeRDVsController implements Initializable {
         StringProperty date;
         StringProperty patient;
         StringProperty medecin;
+        StringProperty description;
         StringProperty etat;
 
-        public Rdv(Integer id, Timestamp date, User patient, User medecin, int etat) {
+        public Rdv(Integer id, Timestamp date, User patient, User medecin, String description, int etat) {
             this.id = new SimpleIntegerProperty(id);
             this.date = new SimpleStringProperty(date.toString());
             this.patient = new SimpleStringProperty(medecin.getNom() + " " + medecin.getPrenom());
             this.medecin = new SimpleStringProperty(medecin.getNom() + " " + medecin.getPrenom());
+            this.description = new SimpleStringProperty(description);
 
             switch (etat) {
                 case 1:
@@ -106,293 +110,15 @@ public class ListeRDVsController implements Initializable {
     private JFXTreeTableView<Rdv> treTableRDVs;
 
     @FXML
-    private Pane bgbtnmenu;
-
-    @FXML
-    private Button btnNews;
-
-    @FXML
-    private Pane BoxUserConnect;
-
-    @FXML
-    private Pane BoxUserWhiteConnect;
-
-    @FXML
-    private Label lblUsername;
-
-    @FXML
-    private Button PanierBtn;
-
-    @FXML
-    private ImageView Panier;
-
-    @FXML
-    private MenuButton NotificationBtn;
-
-    @FXML
-    private ImageView Notification;
-
-    @FXML
-    private Button btnRDVs;
-
-    @FXML
-    private Pane boxAjoutArticle;
-
-    @FXML
-    private Button btnPriseRDV;
-
-    @FXML
-    void priseRDV(ActionEvent event) {
-        
-    }
-
-    @FXML
-    void rdvsDisplay(ActionEvent event) {
-
-    }
-
-    @FXML
-    void navCal(ActionEvent event) {
-        try {
-            Node node = (Node) event.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
-            Scene scene = stage.getScene();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../ui/modifcalendrier.fxml"));
-            Parent root = (Parent) fxmlLoader.load();
-
-            scene.setRoot(root);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-    
-    @FXML
     void triDate(ActionEvent event) {
         reset(sr.triDate(uid));
     }
 
-    public void reset() {
-        treTableRDVs.getColumns().clear();
-
-        JFXTreeTableColumn<Rdv, String> rdvDate = new JFXTreeTableColumn("Date");
-        rdvDate.setPrefWidth(150);
-        rdvDate.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Rdv, String>, ObservableValue<String>>() {
-            @Override
-            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Rdv, String> param) {
-                return param.getValue().getValue().date;
-            }
-        });
-
-        JFXTreeTableColumn<Rdv, String> user = new JFXTreeTableColumn("");
-        if (type == 1) {
-            user = new JFXTreeTableColumn("Médecin");
-            user.setPrefWidth(150);
-            user.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Rdv, String>, ObservableValue<String>>() {
-                @Override
-                public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Rdv, String> param) {
-                    return param.getValue().getValue().medecin;
-                }
-            });
-        } else if (type == 2) {
-            user = new JFXTreeTableColumn("Patient");
-            user.setPrefWidth(150);
-            user.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Rdv, String>, ObservableValue<String>>() {
-                @Override
-                public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Rdv, String> param) {
-                    return param.getValue().getValue().patient;
-                }
-            });
-        }
-
-        JFXTreeTableColumn<Rdv, String> etat = new JFXTreeTableColumn("Etat");
-        etat.setPrefWidth(150);
-        etat.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Rdv, String>, ObservableValue<String>>() {
-            @Override
-            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Rdv, String> param) {
-                return param.getValue().getValue().etat;
-            }
-        });
-        etat.setCellFactory((TreeTableColumn<Rdv, String> param) -> {
-            TreeTableCell cell = new TreeTableCell<Rdv, String>() {
-                protected void updateItem(String item, boolean empty) {
-                    super.updateItem(item, empty);
-                    TreeTableRow<Rdv> ttr = getTreeTableRow();
-                    if (item == null || empty) {
-                        setText(null);
-                        ttr.setStyle("");
-                        setStyle("");
-                    } else {
-                        setText(item.toString());
-                        switch (item) {
-                            case "Disponible":
-                                setStyle("-fx-background-color:lightgreen");
-                                break;
-                            case "Reporté":
-                                setStyle("-fx-background-color:#B0BEE4");
-                                break;
-                            case "Annulé":
-                                setStyle("-fx-background-color:#DE7474");
-                                break;
-                            case "Terminé":
-                                setStyle("-fx-background-color:#E49F81");
-                                break;
-                            default:
-                                setStyle("-fx-background-color:red");
-                                break;
-                        }
-                    }
-                }
-            };
-            return cell;
-        });
-
-        JFXTreeTableColumn<Rdv, String> annulerBtn = new JFXTreeTableColumn("");
-        annulerBtn.setPrefWidth(150);
-        annulerBtn.setCellFactory(new Callback<TreeTableColumn<Rdv, String>, TreeTableCell<Rdv, String>>() {
-            @Override
-            public TreeTableCell call(final TreeTableColumn<Rdv, String> param) {
-                final TreeTableCell<Rdv, String> cell = new TreeTableCell<Rdv, String>() {
-
-                    final JFXButton btn = new JFXButton("Annuler");
-
-                    @Override
-                    public void updateItem(String item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (empty || (super.getTreeTableRow().getItem().etat.getValue() != "Disponible" && super.getTreeTableRow().getItem().etat.getValue() != "Reporté")) {
-                            setGraphic(null);
-                            setText(null);
-                        } else {
-                            btn.setButtonType(JFXButton.ButtonType.RAISED);
-                            btn.setOnAction(event -> {
-                                //Button Action here
-                                Alert alert = new Alert(AlertType.INFORMATION);
-                                alert.setTitle("Annulation RDV");
-                                alert.setContentText("Voulez-vous vraiment annuler votre RDV?");
-                                if (alert.showAndWait().get() == ButtonType.OK) {
-                                    sr.annuler(sr.find(super.getTreeTableRow().getItem().id.getValue()));
-                                    reset();
-                                }
-                            });
-                            btn.setStyle("-jfx-button-type: RAISED;\n"
-                                    + "     -fx-background-color: red;\n"
-                                    + "     -fx-text-fill: black;");
-                            setGraphic(btn);
-                            setText(null);
-                        }
-                    }
-                };
-                return cell;
-            }
-        });
-
-        JFXTreeTableColumn<Rdv, String> reporterBtn = new JFXTreeTableColumn("");
-        reporterBtn.setPrefWidth(150);
-        reporterBtn.setCellFactory(new Callback<TreeTableColumn<Rdv, String>, TreeTableCell<Rdv, String>>() {
-            @Override
-            public TreeTableCell call(final TreeTableColumn<Rdv, String> param) {
-                final TreeTableCell<Rdv, String> cell = new TreeTableCell<Rdv, String>() {
-
-                    final JFXButton btn = new JFXButton("Reporter");
-
-                    @Override
-                    public void updateItem(String item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (empty || type != 2 || (super.getTreeTableRow().getItem().etat.getValue() != "Disponible" && super.getTreeTableRow().getItem().etat.getValue() != "Reporté")) {
-                            setGraphic(null);
-                            setText(null);
-                        } else {
-                            btn.setButtonType(JFXButton.ButtonType.RAISED);
-                            btn.setOnAction(event -> {
-                                //Button Action here
-                                TextInputDialog dialog = new TextInputDialog("0000/00/00 00:00:00");
-
-                                dialog.setTitle("Reporter");
-                                dialog.setHeaderText("Enter la nouvelle date:");
-                                dialog.setContentText("Date:");
-
-                                Optional<String> result = dialog.showAndWait();
-
-                                result.ifPresent(date -> {
-                                    if (Console.toDate(date).before(new Timestamp(System.currentTimeMillis()))) {
-                                        Alert alert = new Alert(Alert.AlertType.ERROR);
-                                        alert.setTitle("Erreur");
-                                        alert.setContentText("La date doit être supérieur à la date courante.");
-
-                                        alert.showAndWait();
-                                    } else {
-                                        sr.reporter(sr.find(super.getTreeTableRow().getItem().id.getValue()), Console.toDate(date.replace('-', '/')));
-                                    }
-                                });
-                                reset();
-                            });
-                            btn.setStyle("-jfx-button-type: RAISED;\n"
-                                    + "     -fx-background-color: blue;\n"
-                                    + "     -fx-text-fill: black;");
-                            setGraphic(btn);
-                            setText(null);
-                        }
-                    }
-                };
-                return cell;
-            }
-        });
-
-        JFXTreeTableColumn<Rdv, String> terminerBtn = new JFXTreeTableColumn("");
-        terminerBtn.setPrefWidth(150);
-        terminerBtn.setCellFactory(new Callback<TreeTableColumn<Rdv, String>, TreeTableCell<Rdv, String>>() {
-            @Override
-            public TreeTableCell call(final TreeTableColumn<Rdv, String> param) {
-                final TreeTableCell<Rdv, String> cell = new TreeTableCell<Rdv, String>() {
-
-                    final JFXButton btn = new JFXButton("Terminer");
-
-                    @Override
-                    public void updateItem(String item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (empty || type != 2 || (super.getTreeTableRow().getItem().etat.getValue() != "Disponible" && super.getTreeTableRow().getItem().etat.getValue() != "Reporté")) {
-                            setGraphic(null);
-                            setText(null);
-                        } else {
-                            btn.setButtonType(JFXButton.ButtonType.RAISED);
-                            btn.setOnAction(event -> {
-                                //Button Action here
-                                sr.terminer(sr.find(super.getTreeTableRow().getItem().id.getValue()));
-                                Alert alert = new Alert(AlertType.INFORMATION);
-                                alert.setTitle("RDV");
-                                alert.setContentText("RDV terminé avec succés");
-
-                                alert.showAndWait();
-                                reset();
-                            });
-                            btn.setStyle("-jfx-button-type: RAISED;\n"
-                                    + "     -fx-background-color: orange;\n"
-                                    + "     -fx-text-fill: black;");
-                            setGraphic(btn);
-                            setText(null);
-                        }
-                    }
-                };
-                return cell;
-            }
-        });
-
-        ObservableList<Rdv> rdvs = FXCollections.observableArrayList();
-        for (doctourna.models.Rdv rdv : sr.findByUid(uid)) {
-            rdvs.add(new Rdv(rdv.getId(), rdv.getDate(), rdv.getPatientId(), rdv.getMedecinId(), rdv.getEtat()));
-        }
-
-        final TreeItem<Rdv> root = new RecursiveTreeItem<Rdv>(rdvs, RecursiveTreeObject::getChildren);
-
-        treTableRDVs.getColumns().setAll(rdvDate, user, etat, annulerBtn, reporterBtn, terminerBtn);
-        treTableRDVs.setRoot(root);
-        treTableRDVs.setShowRoot(false);
-    }
-    
     public void reset(List<doctourna.models.Rdv> list) {
         treTableRDVs.getColumns().clear();
 
         JFXTreeTableColumn<Rdv, String> rdvDate = new JFXTreeTableColumn("Date");
-        rdvDate.setPrefWidth(150);
+        rdvDate.setPrefWidth(400);
         rdvDate.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Rdv, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Rdv, String> param) {
@@ -403,7 +129,7 @@ public class ListeRDVsController implements Initializable {
         JFXTreeTableColumn<Rdv, String> user = new JFXTreeTableColumn("");
         if (type == 1) {
             user = new JFXTreeTableColumn("Médecin");
-            user.setPrefWidth(150);
+            user.setPrefWidth(300);
             user.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Rdv, String>, ObservableValue<String>>() {
                 @Override
                 public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Rdv, String> param) {
@@ -412,7 +138,7 @@ public class ListeRDVsController implements Initializable {
             });
         } else if (type == 2) {
             user = new JFXTreeTableColumn("Patient");
-            user.setPrefWidth(150);
+            user.setPrefWidth(300);
             user.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Rdv, String>, ObservableValue<String>>() {
                 @Override
                 public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Rdv, String> param) {
@@ -487,7 +213,7 @@ public class ListeRDVsController implements Initializable {
                                 alert.setContentText("Voulez-vous vraiment annuler votre RDV?");
                                 if (alert.showAndWait().get() == ButtonType.OK) {
                                     sr.annuler(sr.find(super.getTreeTableRow().getItem().id.getValue()));
-                                    reset();
+                                    reset(list);
                                 }
                             });
                             btn.setStyle("-jfx-button-type: RAISED;\n"
@@ -540,7 +266,7 @@ public class ListeRDVsController implements Initializable {
                                         sr.reporter(sr.find(super.getTreeTableRow().getItem().id.getValue()), Console.toDate(date.replace('-', '/')));
                                     }
                                 });
-                                reset();
+                                reset(list);
                             });
                             btn.setStyle("-jfx-button-type: RAISED;\n"
                                     + "     -fx-background-color: blue;\n"
@@ -579,7 +305,7 @@ public class ListeRDVsController implements Initializable {
                                 alert.setContentText("RDV terminé avec succés");
 
                                 alert.showAndWait();
-                                reset();
+                                reset(list);
                             });
                             btn.setStyle("-jfx-button-type: RAISED;\n"
                                     + "     -fx-background-color: orange;\n"
@@ -595,7 +321,7 @@ public class ListeRDVsController implements Initializable {
 
         ObservableList<Rdv> rdvs = FXCollections.observableArrayList();
         for (doctourna.models.Rdv rdv : list) {
-            rdvs.add(new Rdv(rdv.getId(), rdv.getDate(), rdv.getPatientId(), rdv.getMedecinId(), rdv.getEtat()));
+            rdvs.add(new Rdv(rdv.getId(), rdv.getDate(), rdv.getPatientId(), rdv.getMedecinId(), rdv.getDescription(), rdv.getEtat()));
         }
 
         final TreeItem<Rdv> root = new RecursiveTreeItem<Rdv>(rdvs, RecursiveTreeObject::getChildren);
@@ -603,6 +329,14 @@ public class ListeRDVsController implements Initializable {
         treTableRDVs.getColumns().setAll(rdvDate, user, etat, annulerBtn, reporterBtn, terminerBtn);
         treTableRDVs.setRoot(root);
         treTableRDVs.setShowRoot(false);
+        treTableRDVs.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                PopOver popOver = new PopOver();
+                popOver.setContentNode(new Label("   Description: " + newSelection.getValue().description.getValue() + "   "));
+                popOver.setArrowLocation(null);
+                popOver.show((Stage)treTableRDVs.getScene().getWindow());
+            }
+        });
     }
 
     /**
@@ -610,44 +344,7 @@ public class ListeRDVsController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        if (type == 1) {
-            btnPriseRDV.setText("Prise RDV");
-            btnPriseRDV.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    try {
-                        Node node = (Node) event.getSource();
-                        Stage stage = (Stage) node.getScene().getWindow();
-                        Scene scene = stage.getScene();
-                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../ui/priserdv.fxml"));
-                        Parent root = (Parent) fxmlLoader.load();
-
-                        scene.setRoot(root);
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
-                }
-            });
-        } else if (type == 2) {
-            btnPriseRDV.setText("Ajout Dispos");
-            btnPriseRDV.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    try {
-                        Node node = (Node) event.getSource();
-                        Stage stage = (Stage) node.getScene().getWindow();
-                        Scene scene = stage.getScene();
-                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../ui/ajoutdispo.fxml"));
-                        Parent root = (Parent) fxmlLoader.load();
-
-                        scene.setRoot(root);
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
-                }
-            });
-        }
-        reset();
+        reset(sr.findByUid(uid));
         treTableRDVs.setPlaceholder(new Label("Aucun RDV trouvé."));
     }
 

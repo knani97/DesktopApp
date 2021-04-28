@@ -13,7 +13,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         try {
-        Parent root = FXMLLoader.load(getClass().getResource("ui/calendriers.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("ui/dashboard.fxml"));
         primaryStage.setScene(new Scene(root));
         //set stage borderless
         primaryStage.initStyle(StageStyle.UNDECORATED);

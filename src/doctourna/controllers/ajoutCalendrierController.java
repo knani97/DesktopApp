@@ -9,6 +9,7 @@ import com.calendarfx.view.DateControl;
 import com.calendarfx.view.VirtualGrid;
 import com.jfoenix.controls.JFXButton;
 import doctourna.DOCTOURNA;
+import doctourna.calendrier.InfoCalController;
 import doctourna.calendrier.test;
 import doctourna.models.Calendrier;
 import doctourna.models.Tache;
@@ -81,20 +82,14 @@ public class ajoutCalendrierController implements Initializable {
     private ColorPicker pickrClr;
 
     @FXML
-    private Button btnEditCal;
+    private Text txtExit;
 
     @FXML
-    private Button btnDelCal;
-    
-    @FXML
-    private Text txtExit;
-    
-    @FXML
     private JFXButton btnConsult;
-    
+
     @FXML
     private Label lblCoul;
-    
+
     @FXML
     private Text txtTitle;
 
@@ -117,7 +112,7 @@ public class ajoutCalendrierController implements Initializable {
         alert.setContentText("Calendrier ajouté avec succés.");
 
         alert.showAndWait();
-        
+
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -131,95 +126,26 @@ public class ajoutCalendrierController implements Initializable {
         }
     }
 
-    @FXML
-    void delCal(ActionEvent event) {
-        ButtonType oui = new ButtonType("Oui", ButtonBar.ButtonData.OK_DONE);
-        ButtonType non = new ButtonType("Non", ButtonBar.ButtonData.CANCEL_CLOSE);
-        Alert alert = new Alert(AlertType.WARNING,
-                "Voulez-vous vraiment supprimer votre calendrier ?",
-                oui,
-                non
-        );
-        alert.setTitle("Suppression de Calendrier");
-        Optional<ButtonType> result = alert.showAndWait();
-
-        if (result.orElse(non) == oui) {
-            sc.supprimer(sc.findByUid(uid));
-        }
-        
-        try {
-            Node node = (Node) event.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
-            Scene scene = stage.getScene();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../ui/ajoutcalendrier.fxml"));
-            Parent root = (Parent) fxmlLoader.load();
-
-            scene.setRoot(root);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    @FXML
-    void editCal(ActionEvent event) {
-        try {
-            Node node = (Node) event.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
-            Scene scene = stage.getScene();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../ui/modifcalendrier.fxml"));
-            Parent root = (Parent) fxmlLoader.load();
-
-            scene.setRoot(root);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        
-        try {
-            Node node = (Node) event.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
-            Scene scene = stage.getScene();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../ui/ajoutcalendrier.fxml"));
-            Parent root = (Parent) fxmlLoader.load();
-
-            scene.setRoot(root);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-    
-    @FXML
-    void navRDV(ActionEvent event) {
-        try {
-            Node node = (Node) event.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
-            Scene scene = stage.getScene();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../ui/listerdvs.fxml"));
-            Parent root = (Parent) fxmlLoader.load();
-
-            scene.setRoot(root);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-    
     @FXML
     void showCal(ActionEvent event) {
         try {
-                    // Because we need to init the JavaFX toolkit - which usually Application.launch does
-                    // I'm not sure if this way of launching has any effect on anything
-        new JFXPanel();
+            // Because we need to init the JavaFX toolkit - which usually Application.launch does
+            // I'm not sure if this way of launching has any effect on anything
+            new JFXPanel();
 
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                // Your class that extends Application
-                try {new test().start(new Stage());}
-                catch (Exception ex) {}
-            }
-        });
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    // Your class that extends Application
+                    try {
+                        new test().start(new Stage());
+                    } catch (Exception ex) {
+                    }
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -238,8 +164,7 @@ public class ajoutCalendrierController implements Initializable {
             chcTimezone.setValue("UTC");
             chbEmail.setSelected(true);
             pickrClr.setValue(Color.LIGHTBLUE);
-        }
-        else {
+        } else {
             chcFormat.setVisible(false);
             chcTimezone.setVisible(false);
             chbEmail.setVisible(false);

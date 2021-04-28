@@ -11,6 +11,8 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTimePicker;
+import doctourna.calendrier.InfoCalController;
+import doctourna.calendrier.test;
 import doctourna.console.Console;
 import doctourna.models.Disponibilite;
 import doctourna.models.Tache;
@@ -79,6 +81,7 @@ public class AjoutTacheController implements Initializable {
         );
         
         st.ajouter(tache);
+        test.resetStats();
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Succés");

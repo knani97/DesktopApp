@@ -5,6 +5,7 @@
  */
 package doctourna.services;
 
+import de.mkammerer.argon2.Argon2;
 import doctourna.models.Calendrier;
 import doctourna.models.Disponibilite;
 import doctourna.models.Tache;
@@ -35,7 +36,6 @@ public class ServiceTache implements IService<Tache> {
     public void ajouter(Tache tache) {
         String query = "INSERT INTO tache(calendrier,libelle,description,type,couleur,date,duree) "
                 + "VALUES(?,?,?,?,?,?,?)";
-
         try {
             PreparedStatement ps = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, tache.getCalendrier().getId());
@@ -175,18 +175,21 @@ public class ServiceTache implements IService<Tache> {
         }
         return list;
     }
-
-    public List<Tache> findDispos(int calendrier) {
-        return findByCalendrier(calendrier).stream().filter(t -> t.getType().contains("4")).collect(Collectors.toList());
-    }
-
+    
     public List<Tache> findByType(int calendrier, Integer type) {
         return findByCalendrier(calendrier).stream().filter(t -> t.getType().contains(type.toString())).collect(Collectors.toList());
     }
 
+    public List<Tache> findRDVs(int calendrier) {
+        return findByType(calendrier, 1);
+    }
+    
+    public List<Tache> findDispos(int calendrier) {
+        return findByCalendrier(calendrier).stream().filter(t -> t.getType().contains("4")).collect(Collectors.toList());
+    }
+
     public void ajouterDispos(Disponibilite dispo, int calendrier) {
         LocalDateTime t = dispo.getStartDate().toLocalDateTime();
-        int i = 0;
 
         while (t.isBefore(dispo.getEndDate().toLocalDateTime())) {
             ajouter(new Tache(

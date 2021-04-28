@@ -6,7 +6,11 @@
 package doctourna.calendrier;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXCheckBox;
+import doctourna.controllers.AjoutTacheController;
 import doctourna.controllers.ConsultTacheController;
+import doctourna.services.ServiceCalendrier;
+import doctourna.utils.Session;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -26,8 +30,13 @@ public class CalendarHeaderController implements Initializable {
     
     public static Stage primaryStage;
     
+    ServiceCalendrier sc = new ServiceCalendrier();
+    
     @FXML
     private JFXButton btnClick;
+    
+    @FXML
+    private JFXCheckBox chkBoxRappel;
 
     @FXML
     void ajoutTacheClick(ActionEvent event) {
@@ -53,13 +62,19 @@ public class CalendarHeaderController implements Initializable {
             ex.printStackTrace();
         }
     }
+    
+    @FXML
+    void modifRappel(ActionEvent event) {
+        sc.findByUid(Session.getId()).setEmail(chkBoxRappel.isSelected());
+        sc.modifier(sc.findByUid(Session.getId()));
+    }
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        chkBoxRappel.setSelected(sc.findByUid(Session.getId()).getEmail());
     }
 
 }

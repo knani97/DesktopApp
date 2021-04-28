@@ -224,4 +224,8 @@ public class ServiceRdv implements IService<Rdv> {
     public List<Rdv> triDate(int uid) {
         return findByUid(uid).stream().sorted((r1, r2) -> r1.getDate().before(r2.getDate()) ? 1 : -1).collect(Collectors.toList());
     }
+    
+    public List<Rdv> findByEtat(int etat) {
+        return afficher().stream().filter(r -> r.getEtat() == etat).collect(Collectors.toList());
+    }
 }

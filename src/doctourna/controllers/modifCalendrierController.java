@@ -39,39 +39,6 @@ public class modifCalendrierController implements Initializable {
     Calendrier calendrier;
 
     @FXML
-    private Pane bgbtnmenu;
-
-    @FXML
-    private Button btnNews;
-
-    @FXML
-    private Pane BoxUserConnect;
-
-    @FXML
-    private Pane BoxUserWhiteConnect;
-
-    @FXML
-    private Button PanierBtn;
-
-    @FXML
-    private ImageView Panier;
-
-    @FXML
-    private MenuButton NotificationBtn;
-
-    @FXML
-    private ImageView Notification;
-
-    @FXML
-    private Button News;
-
-    @FXML
-    private Pane boxAjoutArticle;
-    
-    @FXML
-    private Button btnClick;
-
-    @FXML
     private ComboBox<String> chcFormat;
 
     @FXML
@@ -82,15 +49,6 @@ public class modifCalendrierController implements Initializable {
 
     @FXML
     private ColorPicker pickrClr;
-    
-    @FXML
-    private Label lblUsername;
-    
-    @FXML
-    private Button btnEditCal;
-
-    @FXML
-    private Button btnDelCal;
 
     @FXML
     public void display(ActionEvent event) {
@@ -111,99 +69,11 @@ public class modifCalendrierController implements Initializable {
         alert.setContentText("Calendrier modifié avec succés.");
 
         alert.showAndWait();
-        
-        try {
-            Node node = (Node) event.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
-            Scene scene = stage.getScene();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../ui/ajoutcalendrier.fxml"));
-            Parent root = (Parent) fxmlLoader.load();
-
-            scene.setRoot(root);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-    
-    @FXML
-    void delCal(ActionEvent event) {
-        ButtonType oui = new ButtonType("Oui", ButtonBar.ButtonData.OK_DONE);
-        ButtonType non = new ButtonType("Non", ButtonBar.ButtonData.CANCEL_CLOSE);
-        Alert alert = new Alert(AlertType.WARNING,
-                "Voulez-vous vraiment supprimer votre calendrier ?",
-                oui,
-                non
-        );
-        alert.setTitle("Suppression de Calendrier");
-        Optional<ButtonType> result = alert.showAndWait();
-
-        if (result.orElse(non) == oui) {
-            sc.supprimer(sc.findByUid(uid));
-        }
-        
-        try {
-            Node node = (Node) event.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
-            Scene scene = stage.getScene();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../ui/ajoutcalendrier.fxml"));
-            Parent root = (Parent) fxmlLoader.load();
-
-            scene.setRoot(root);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    @FXML
-    void editCal(ActionEvent event) {
-        try {
-            Node node = (Node) event.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
-            Scene scene = stage.getScene();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../ui/modifcalendrier.fxml"));
-            Parent root = (Parent) fxmlLoader.load();
-
-            scene.setRoot(root);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-    
-    @FXML
-    void calDisplay(ActionEvent event) {
-        try {
-            Node node = (Node) event.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
-            Scene scene = stage.getScene();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../ui/ajoutcalendrier.fxml"));
-            Parent root = (Parent) fxmlLoader.load();
-
-            scene.setRoot(root);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-    
-    @FXML
-    void navRDV(ActionEvent event) {
-        try {
-            Node node = (Node) event.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
-            Scene scene = stage.getScene();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../ui/listerdvs.fxml"));
-            Parent root = (Parent) fxmlLoader.load();
-
-            scene.setRoot(root);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         calendrier = sc.findByUid(uid);
-        
-        lblUsername.setText(Session.getPrenom() + " " + Session.getNom());
         
         chcFormat.getItems().add("Plage Horaire");
         chcFormat.getItems().add("Calendrier Standard");

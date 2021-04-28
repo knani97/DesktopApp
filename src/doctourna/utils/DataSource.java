@@ -19,7 +19,7 @@ public class DataSource {
     
     private final String USER = "root";
     private final String PASSWORD = "";
-    private final String URL = "jdbc:mysql://localhost:3306/doctourna?serverTimezone=UTC";
+    private final String URL = "jdbc:mysql://localhost:3306/doctourna?serverTimezone=Africa/Tunis";
     
     public DataSource() {
         try {

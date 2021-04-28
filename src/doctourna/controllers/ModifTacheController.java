@@ -11,6 +11,7 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTimePicker;
+import doctourna.calendrier.test;
 import doctourna.console.Console;
 import doctourna.models.Tache;
 import doctourna.services.ServiceCalendrier;
@@ -80,6 +81,8 @@ public class ModifTacheController implements Initializable {
         );
 
         st.modifier(tache2);
+        test.refresh();
+        test.resetStats();
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Succés");

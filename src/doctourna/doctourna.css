@@ -1,10 +1,6 @@
 /*
  * Empty Stylesheet file.
  */
-
-.mainFxmlClass {
-
-}
 .label {
     -fx-font-size: 14px;
     -fx-font-weight: bold;
@@ -13,6 +9,55 @@
 }
 .root {
     -fx-background-image: url("../images/background.png");
+}
+.btnMenu1, .btnMenu2, .btnMenu3, .btnMenu4, .btnMenu5 {
+    -fx-background-color: white;
+}
+.btnMenu1:hover, .btnMenu2:hover, .btnMenu3:hover, .btnMenu4:hover, .btnMenu5:hover {
+    -fx-background-color: #deeeff;
+    -fx-background-radius: 10px;
+}
+.btnMenu1:pressed, .btnMenu2:pressed, .btnMenu3:pressed, .btnMenu4:pressed, .btnMenu5:pressed {
+    -fx-background-color: #c3c5f7;
+    -fx-background-radius: 10px;
+}
+.btnMenu1:focused, .btnMenu2:focused, .btnMenu3:focused, .btnMenu4:focused, .btnMenu5:focused {
+    -fx-background-color: #4A90E2;
+    -fx-background-radius: 10px;
+}
+.btnMenu1:focused .root, .btnMenu2:focused .root, .btnMenu3:focused .root, .btnMenu4:focused .root, .btnMenu5:focused .root {
+    -fx-background-color: #F5F5F5;
+    -fx-background-radius: 18 0 0 18;
+}
+.btnMenu1 .image-view {
+    -fx-image: url("../images/calendar.png");
+}
+.btnMenu1:focused .image-view {
+    -fx-image: url("../images/calendar_active.png");
+}
+.btnMenu2 .image-view {
+    -fx-image: url("../images/rdv_icon.png");
+}
+.btnMenu2:focused .image-view {
+    -fx-image: url("../images/rdv_icon_active.png");
+}
+.btnMenu3 .image-view {
+    -fx-image: url("../images/health.png");
+}
+.btnMenu3:focused .image-view {
+    -fx-image: url("../images/health_active.png");
+}
+.btnMenu4 .image-view {
+    -fx-image: url("../images/videos.png");
+}
+.btnMenu4:focused .image-view {
+    -fx-image: url("../images/videos_active.png");
+}
+.btnMenu5 .image-view {
+    -fx-image: url("../images/article_white_24dp.png");
+}
+.btnMenu5:focused .image-view {
+    -fx-image: url("../images/outline_article_white_24dp.png");
 }
 
 .boxAjoutArticle{
@@ -32,9 +77,6 @@
 }
 .BoxUserWhiteConnect{
    -fx-effect: dropshadow(three-pass-box, #3A3A3A, 30, 0, 4,0);
-}
-.btnNews{
-   -fx-effect: dropshadow(three-pass-box, #C0C0C0, 20, 0, 10,10);
 }
 
 .btndeletenews{

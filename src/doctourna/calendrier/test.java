@@ -16,12 +16,15 @@ import com.calendarfx.view.AllDayView;
 import com.calendarfx.view.CalendarView;
 import com.calendarfx.view.DateControl;
 import com.calendarfx.view.VirtualGrid;
+import doctourna.console.Console;
 import doctourna.controllers.ConsultTacheController;
 import doctourna.controllers.ModifTacheController;
 import doctourna.models.Tache;
 import doctourna.services.ServiceCalendrier;
 import doctourna.services.ServiceTache;
 import doctourna.utils.Session;
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.time.DayOfWeek;
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -33,6 +36,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -43,32 +47,95 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.input.DragEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.BorderStrokeStyle;
+import javafx.scene.layout.BorderWidths;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.paint.Color;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 import org.controlsfx.control.PopOver;
 
 public class test extends Application {
 
-    ServiceCalendrier sc = new ServiceCalendrier();
-    ServiceTache st = new ServiceTache();
+    public static ServiceCalendrier sc = new ServiceCalendrier();
+    public static ServiceTache st = new ServiceTache();
+    public static Calendar rdvs = new Calendar("RDVs");
+    public static Calendar meds = new Calendar("Prises Médicaments");
+    public static Calendar persos = new Calendar("Personnelles");
+    public static Calendar dispos = new Calendar("Disponibilités");
+    public static Calendar rdvsPersos = new Calendar("RDVs Personnelles");
+    public static CalendarView calendarView = new CalendarView();
+    public static InfoCalController infoCal = new InfoCalController();
+
+    public static void reset() {
+        for (Tache t : st.findByCalendrier(sc.findByUid(Session.getId()).getId())) {
+            Entry<Tache> event = new Entry<>(t.getLibelle());
+
+            event.setId(t.getId().toString());
+
+            event.changeStartDate(t.getDate().toLocalDateTime().toLocalDate(), false);
+            event.changeStartTime(t.getDate().toLocalDateTime().toLocalTime(), false);
+
+            LocalDateTime dateTimeEnd = t.getDate().toLocalDateTime();
+            dateTimeEnd = dateTimeEnd.plusHours(t.getDuree().toLocalTime().getHour());
+            dateTimeEnd = dateTimeEnd.plusMinutes(t.getDuree().toLocalTime().getMinute());
+            event.changeEndDate(dateTimeEnd.toLocalDate(), false);
+            event.changeEndTime(dateTimeEnd.toLocalTime(), false);
+
+            event.setUserObject(t);
+
+            switch (t.getType()) {
+                case "1":
+                    rdvs.addEntry(event);
+                    break;
+                case "2":
+                    meds.addEntry(event);
+                    break;
+                case "3":
+                    persos.addEntry(event);
+                    break;
+                case "4":
+                    dispos.addEntry(event);
+                    break;
+                case "5":
+                    rdvsPersos.addEntry(event);
+                    break;
+                default:
+                    System.out.println("Type non-reconnu.");
+                    break;
+            }
+        }
+    }
+
+    public static void refresh() {
+        rdvs.clear();
+        meds.clear();
+        persos.clear();
+        dispos.clear();
+        rdvsPersos.clear();
+        reset();
+    }
+    
+    public static void resetStats() {
+        test.infoCal.reset();
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        CalendarView calendarView = new CalendarView();
-
-        Calendar rdvs = new Calendar("RDVs");
-        Calendar meds = new Calendar("Prises Médicaments");
-        Calendar persos = new Calendar("Personnelles");
-        Calendar dispos = new Calendar("Disponibilités");
-        Calendar rdvsPersos = new Calendar("RDVs Personnelles");
-
         rdvs.setStyle(Style.STYLE5);
         meds.setStyle(Style.STYLE2);
         persos.setStyle(Style.STYLE4);
         dispos.setStyle(Style.STYLE1);
         rdvsPersos.setStyle(Style.STYLE3);
+
+        rdvs.setReadOnly(true);
 
         CalendarSource myCalendarSource = new CalendarSource("Types");
         myCalendarSource.getCalendars().addAll(rdvs, meds, persos, dispos, rdvsPersos);
@@ -92,7 +159,6 @@ public class test extends Application {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-
                 }
             }
         ;
@@ -101,50 +167,36 @@ public class test extends Application {
         updateTimeThread.setPriority(Thread.MIN_PRIORITY);
         updateTimeThread.setDaemon(true);
         updateTimeThread.start();
+
+        reset();
         
-        for (Tache t : st.findByCalendrier(sc.findByUid(Session.getId()).getId())) {
-            Entry<Tache> event = new Entry<>(t.getLibelle());
-
-            event.setId(t.getId().toString());
-
-            event.changeStartDate(t.getDate().toLocalDateTime().toLocalDate());
-            event.changeStartTime(t.getDate().toLocalDateTime().toLocalTime());
-
-            LocalDateTime dateTime = t.getDate().toLocalDateTime();
-            dateTime = dateTime.plusHours(t.getDuree().toLocalTime().getHour());
-            dateTime = dateTime.plusMinutes(t.getDuree().toLocalTime().getMinute());
-            event.changeEndTime(dateTime.toLocalTime());
-
-            switch (t.getType()) {
-                case "1":
-                    rdvs.addEntry(event);
-                    break;
-                case "2":
-                    meds.addEntry(event);
-                    break;
-                case "3":
-                    persos.addEntry(event);
-                    break;
-                case "4":
-                    dispos.addEntry(event);
-                    break;
-                case "5":
-                    rdvsPersos.addEntry(event);
-                    break;
-                default:
-                    System.out.println("Type non-reconnu.");
-                    break;
-            }
-        }
+        FXMLLoader loaderN2 = new FXMLLoader(
+                getClass().getResource(
+                        "infocal.fxml"
+                )
+        );
+        Node n2 = loaderN2.load();
+        calendarView.setFooter(n2);
+        
+        FXMLLoader loaderN = new FXMLLoader(
+                getClass().getResource(
+                        "calendarheader.fxml"
+                )
+        );
+        Node n = loaderN.load();
+        ((CalendarHeaderController) loaderN.getController()).primaryStage = primaryStage;
+        calendarView.setHeader(n);
+        
+        test.infoCal = loaderN2.getController();
 
         PopOver popOver = new PopOver();
         FXMLLoader loader = new FXMLLoader(
                 getClass().getResource(
-                        "../ui/modiftache.fxml"
+                        "../ui/consulttache.fxml"
                 )
         );
         AnchorPane p = loader.load();
-        ModifTacheController controller = loader.getController();
+        ConsultTacheController controller = loader.getController();
         popOver.setContentNode(p);
         calendarView.setEntryDetailsPopOverContentCallback(param -> {
             controller.setTache(Integer.parseInt(param.getEntry().getId()));
@@ -166,7 +218,19 @@ public class test extends Application {
                 time = upperTime;
             }
 
-            Entry<Tache> entry = new Entry<>("New Entry");
+            Entry<Tache> entry = new Entry<>("Tâche Personnelle");
+            Tache tache = new Tache(
+                    null,
+                    sc.findByUid(Session.getId()),
+                    "Tâche Personnelle",
+                    "",
+                    "3",
+                    "#000000",
+                    Timestamp.valueOf(time.toLocalDateTime()),
+                    Time.valueOf(LocalTime.ofNanoOfDay(entry.getDuration().toNanos()))
+            );
+            st.ajouter(tache);
+            entry.setUserObject(tache);
             entry.changeStartDate(time.toLocalDate());
             entry.changeStartTime(time.toLocalTime());
             entry.changeEndDate(entry.getStartDate());
@@ -176,7 +240,9 @@ public class test extends Application {
                 entry.setFullDay(true);
             }
 
-            return entry;
+            refresh();
+            resetStats();
+            return null;
         });
 
         calendarView.setEntryContextMenuCallback(param -> {
@@ -222,7 +288,7 @@ public class test extends Application {
                                 )
                         );
                         AnchorPane p2 = loader2.load();
-                        ConsultTacheController controller2 = loader2.getController();
+                        ModifTacheController controller2 = loader2.getController();
                         popOver2.setContentNode(p2);
                         popOver2.setStyle(".popover > .border  {\n"
                                 + "    -fx-border-style: none;\n"
@@ -253,24 +319,36 @@ public class test extends Application {
 
                     if (result.orElse(non) == oui) {
                         st.supprimer(st.find(Integer.parseInt(param.getEntry().getId())));
+                        refresh();
+                        resetStats();
                     }
                 }
             });
-            contextMenu.getItems().addAll(item1, item2, item3);
+            if (!((doctourna.models.Tache) param.getEntry().getUserObject()).getType().contains("1")) {
+                contextMenu.getItems().addAll(item1, item2, item3);
+            }
             return contextMenu;
         });
+
+        calendarView.setEntryEditPolicy(param -> {
+            if (param.getEditOperation() == DateControl.EditOperation.MOVE) {
+                ((Tache) param.getEntry().getUserObject()).setDate(Timestamp.valueOf(param.getEntry().getStartAsLocalDateTime()));
+                st.modifier(((Tache) param.getEntry().getUserObject()));
+            }
+            else if (param.getEditOperation() == DateControl.EditOperation.DELETE)
+                return false;
+            else {
+                ((Tache) param.getEntry().getUserObject()).setDuree(Time.valueOf(LocalTime.ofSecondOfDay(param.getEntry().getDuration().getSeconds())));
+                st.modifier(((Tache) param.getEntry().getUserObject()));
+            }
+            return true;
+        });
         
-        FXMLLoader loaderN = new FXMLLoader(
-                getClass().getResource(
-                        "calendarheader.fxml"
-                )
-        );
-        Node n = loaderN.load();
-        ((CalendarHeaderController)loaderN.getController()).primaryStage = primaryStage;
-        calendarView.setHeader(n);
+        calendarView.setBorder(new Border(new BorderStroke(Color.CORNFLOWERBLUE, 
+            BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(4d))));
 
         Scene scene = new Scene(calendarView);
-        scene.getStylesheets().add(this.getClass().getResource("../doctourna.css").toExternalForm());
+        scene.getStylesheets().add(this.getClass().getResource("calendrier.css").toExternalForm());
         primaryStage.setTitle("Calendrier");
         primaryStage.setScene(scene);
         primaryStage.setWidth(1300);

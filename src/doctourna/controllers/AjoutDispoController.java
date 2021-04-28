@@ -51,42 +51,6 @@ public class AjoutDispoController implements Initializable {
     int type = Session.getType();
     
     @FXML
-    private Pane bgbtnmenu;
-
-    @FXML
-    private Button btnNews;
-
-    @FXML
-    private Pane BoxUserConnect;
-
-    @FXML
-    private Pane BoxUserWhiteConnect;
-
-    @FXML
-    private Label lblUsername;
-
-    @FXML
-    private Button PanierBtn;
-
-    @FXML
-    private ImageView Panier;
-
-    @FXML
-    private MenuButton NotificationBtn;
-
-    @FXML
-    private ImageView Notification;
-
-    @FXML
-    private Button btnRDVs;
-
-    @FXML
-    private Pane boxAjoutArticle;
-
-    @FXML
-    private Button btnClick;
-
-    @FXML
     private JFXDatePicker dteDateDebut;
 
     @FXML
@@ -103,9 +67,6 @@ public class AjoutDispoController implements Initializable {
 
     @FXML
     private JFXTextField txtFldDureePause;
-    
-    @FXML
-    private Button btnPriseRDV;
 
     @FXML
     void display(ActionEvent event) {
@@ -143,51 +104,6 @@ public class AjoutDispoController implements Initializable {
                 + "Durée RDV: " + txtFldDureeRDV.getText());
 
         alert.showAndWait();
-    }
-    
-    @FXML
-    void priseRDV(ActionEvent event) {
-        try {
-            Node node = (Node) event.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
-            Scene scene = stage.getScene();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../ui/priserdv.fxml"));
-            Parent root = (Parent) fxmlLoader.load();
-
-            scene.setRoot(root);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    @FXML
-    void rdvsDisplay(ActionEvent event) {
-        try {
-            Node node = (Node) event.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
-            Scene scene = stage.getScene();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../ui/listerdvs.fxml"));
-            Parent root = (Parent) fxmlLoader.load();
-
-            scene.setRoot(root);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-    
-    @FXML
-    void navCal(ActionEvent event) {
-        try {
-            Node node = (Node) event.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
-            Scene scene = stage.getScene();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../ui/modifcalendrier.fxml"));
-            Parent root = (Parent) fxmlLoader.load();
-
-            scene.setRoot(root);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
     }
 
     /**

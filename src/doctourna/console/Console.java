@@ -21,6 +21,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.Scanner;
 import javafx.beans.property.SimpleStringProperty;
@@ -151,7 +152,7 @@ public class Console {
             case "Disponibilité":
                 return 4;
             case "5":
-            case "RDV Perso-":
+            case "RDV Perso":
                 return 5;
             default:
                 return -1;
@@ -168,6 +169,32 @@ public class Console {
             System.out.println(e.getMessage());
         }
         return null;
+    }
+
+    public static boolean secsDiff(LocalDateTime fromDateTime, LocalDateTime toDateTime, int mins) {
+        LocalDateTime tempDateTime = LocalDateTime.from(fromDateTime);
+
+        long years = tempDateTime.until(toDateTime, ChronoUnit.YEARS);
+        tempDateTime = tempDateTime.plusYears(years);
+
+        long months = tempDateTime.until(toDateTime, ChronoUnit.MONTHS);
+        tempDateTime = tempDateTime.plusMonths(months);
+
+        long days = tempDateTime.until(toDateTime, ChronoUnit.DAYS);
+        tempDateTime = tempDateTime.plusDays(days);
+
+        long hours = tempDateTime.until(toDateTime, ChronoUnit.HOURS);
+        tempDateTime = tempDateTime.plusHours(hours);
+
+        long minutes = tempDateTime.until(toDateTime, ChronoUnit.MINUTES);
+        tempDateTime = tempDateTime.plusMinutes(minutes);
+
+        long seconds = tempDateTime.until(toDateTime, ChronoUnit.SECONDS);
+        
+        if (minutes < 0)
+            minutes *= -1;
+        
+        return years == 0 && months == 0 && days == 0 && hours == 0 && minutes <= mins;
     }
 
     public static Calendrier getCalendrier(int uid, int type, Scanner scanner) {
