@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #e9dee6;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.WelcomePageController">
+   <children>
+      <AnchorPane prefHeight="409.0" prefWidth="660.0" style="-fx-background-color: #a6e0ff;">
+         <children>
+            <Label layoutX="267.0" layoutY="24.0" text="Welcome to Main Page">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <AnchorPane prefHeight="409.0" prefWidth="115.0" style="-fx-background-color: #449bc9;">
+               <children>
+                  <FontAwesomeIcon fill="#fffefe" glyphName="PHONE" layoutX="39.0" layoutY="261.0" size="3.5em" />
+                  <FontAwesomeIcon fill="WHITE" glyphName="BOOK" layoutX="36.0" layoutY="167.0" size="3.5em" />
+                  <FontAwesomeIcon fill="WHITE" glyphName="BARS" layoutX="38.0" layoutY="69.0" size="3.5EM" />
+                  <FontAwesomeIcon fill="WHITE" glyphName="COGS" layoutX="35.0" layoutY="348.0" size="3.5em" />
+               </children>
+            </AnchorPane>
+            <FontAwesomeIcon glyphName="USER" layoutX="608.0" layoutY="48.0" size="2.5em" />
+            <Button fx:id="logoutBtn" layoutX="555.0" layoutY="358.0" mnemonicParsing="false" onAction="#logout" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: BLACK;" text="LOGOUT" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
