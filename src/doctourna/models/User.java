@@ -5,94 +5,32 @@
  */
 package doctourna.models;
 
-import java.io.Serializable;
 import java.util.Collection;
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author mouhe
  */
-@Entity
-@Table(name = "user")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
-    @NamedQuery(name = "User.findById", query = "SELECT u FROM User u WHERE u.id = :id"),
-    @NamedQuery(name = "User.findByImage", query = "SELECT u FROM User u WHERE u.image = :image"),
-    @NamedQuery(name = "User.findByType", query = "SELECT u FROM User u WHERE u.type = :type"),
-    @NamedQuery(name = "User.findByNom", query = "SELECT u FROM User u WHERE u.nom = :nom"),
-    @NamedQuery(name = "User.findByPrenom", query = "SELECT u FROM User u WHERE u.prenom = :prenom"),
-    @NamedQuery(name = "User.findByEmail", query = "SELECT u FROM User u WHERE u.email = :email"),
-    @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password"),
-    @NamedQuery(name = "User.findByActivationToken", query = "SELECT u FROM User u WHERE u.activationToken = :activationToken"),
-    @NamedQuery(name = "User.findByResetToken", query = "SELECT u FROM User u WHERE u.resetToken = :resetToken"),
-    @NamedQuery(name = "User.findByArticles", query = "SELECT u FROM User u WHERE u.articles = :articles")})
-public class User implements Serializable {
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUserId")
+public class User implements {
     private Collection<Reagit> reagitCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
     private Collection<Post> postCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
     private Collection<Comment> commentCollection;
-    @OneToMany(mappedBy = "idUserId")
     private Collection<Commentaires> commentairesCollection;
-
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
+    
     private Integer id;
-    @Column(name = "image")
     private String image;
-    @Column(name = "type")
     private Integer type;
-    @Basic(optional = false)
-    @Column(name = "nom")
     private String nom;
-    @Basic(optional = false)
-    @Column(name = "prenom")
     private String prenom;
-    @Column(name = "email")
     private String email;
-    @Basic(optional = false)
-    @Lob
-    @Column(name = "roles")
     private String roles;
-    @Basic(optional = false)
-    @Column(name = "password")
     private String password;
-    @Column(name = "activation_token")
     private String activationToken;
-    @Column(name = "reset_token")
     private String resetToken;
-    @Column(name = "articles")
     private String articles;
-    @OneToMany(mappedBy = "uidId")
     private Collection<Calendrier> calendrierCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "medecinId")
     private Collection<Rdv> rdvCollection;
-    @OneToMany(mappedBy = "patientId")
     private Collection<Rdv> rdvCollection1;
-    @JoinColumn(name = "cv_id", referencedColumnName = "id")
-    @OneToOne
     private Cv cvId;
 
     public User() {
@@ -271,7 +209,6 @@ public class User implements Serializable {
         this.reagitCollection = reagitCollection;
     }
 
-    @XmlTransient
     public Collection<Post> getPostCollection() {
         return postCollection;
     }
@@ -280,7 +217,6 @@ public class User implements Serializable {
         this.postCollection = postCollection;
     }
 
-    @XmlTransient
     public Collection<Comment> getCommentCollection() {
         return commentCollection;
     }
@@ -289,7 +225,6 @@ public class User implements Serializable {
         this.commentCollection = commentCollection;
     }
 
-    @XmlTransient
     public Collection<Commentaires> getCommentairesCollection() {
         return commentairesCollection;
     }
