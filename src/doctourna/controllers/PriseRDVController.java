@@ -67,7 +67,7 @@ public class PriseRDVController implements Initializable {
     ServiceCalendrier sc = new ServiceCalendrier();
     ServiceRdv sr = new ServiceRdv();
     int uid = Session.getId();
-    String email = "mouheb.benabdallah@esprit.tn";
+    String email = Session.getEmail();
 
     @FXML
     private Pane bgbtnmenu;
