@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="471.0" prefWidth="654.0" style="-fx-background-color: #9F38B4;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.controllers.pharmaciesController">
+    <stylesheets>
+        <URL value="@pharmacie.css" />
+    </stylesheets>
+   <children>
+      <TableView fx:id="pharmacies" layoutX="235.0" layoutY="78.0" onMouseClicked="#afficherDetail" prefHeight="306.0" prefWidth="405.0">
+        <columns>
+          <TableColumn fx:id="nomCol" prefWidth="75.0" text="Nom" />
+            <TableColumn fx:id="adresseCol" prefWidth="75.0" text="Adresse" />
+            <TableColumn fx:id="gouvernouratCol" prefWidth="104.0" text="Gouvernorat" />
+            <TableColumn fx:id="imageCol" prefWidth="150.0" text="Image" />
+        </columns>
+      </TableView>
+      <TextField fx:id="nom" layoutX="80.0" layoutY="104.0" />
+      <TextField fx:id="adresse" layoutX="79.0" layoutY="149.0" />
+      <TextField fx:id="gouvernourat" layoutX="80.0" layoutY="197.0" />
+      <Label layoutX="12.0" layoutY="108.0" prefHeight="17.0" prefWidth="57.0" text="Nom :" textFill="WHITE">
+         <font>
+            <Font name="Comic Sans MS Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="9.0" layoutY="153.0" prefHeight="17.0" prefWidth="76.0" text="Adresse :" textFill="WHITE">
+         <font>
+            <Font name="Comic Sans MS Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="3.0" layoutY="201.0" prefHeight="17.0" prefWidth="88.0" text="Gouvernorat:" textFill="WHITE">
+         <font>
+            <Font name="Comic Sans MS Bold" size="11.0" />
+         </font></Label>
+      <Button fx:id="image" layoutX="80.0" layoutY="267.0" mnemonicParsing="false" onAction="#upload" prefHeight="25.0" prefWidth="140.0" styleClass="combo" text="Uplaod image" />
+      <Label layoutX="9.0" layoutY="271.0" prefHeight="17.0" prefWidth="57.0" text="Image :" textFill="WHITE">
+         <font>
+            <Font name="Comic Sans MS Bold" size="11.0" />
+         </font></Label>
+      <Button fx:id="modifier" layoutX="198.0" layoutY="404.0" mnemonicParsing="false" onAction="#modifier" prefHeight="39.0" prefWidth="127.0" styleClass="combo" text="Modifier" />
+      <Button fx:id="supprimer" layoutX="371.0" layoutY="403.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="39.0" prefWidth="114.0" styleClass="combo" text="Supprimer" />
+      <Button fx:id="ajouter" layoutX="22.0" layoutY="403.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="38.0" prefWidth="140.0" styleClass="combo" text="Ajouter" />
+      <ImageView fx:id="img" fitHeight="89.0" fitWidth="140.0" layoutX="69.0" layoutY="305.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="retour" layoutX="522.0" layoutY="404.0" mnemonicParsing="false" onAction="#retour" prefHeight="38.0" prefWidth="105.0" styleClass="combo" text="retour" />
+      <Label layoutX="235.0" layoutY="4.0" text="Gestion pharmacie" textFill="WHITE">
+         <font>
+            <Font name="Comic Sans MS Bold" size="23.0" />
+         </font>
+         <graphic>
+            <ImageView fx:id="imgAnim" fitHeight="74.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/pharmacie.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Label>
+      <TextField fx:id="searchField" layoutX="27.0" layoutY="28.0" promptText="Recherche" />
+   </children>
+</AnchorPane>
