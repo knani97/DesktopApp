@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.SignupPageMedController">
+   <children>
+      <Label layoutX="320.0" layoutY="76.0" text="Specialite ">
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="325.0" layoutY="229.0" prefHeight="17.0" prefWidth="60.0" text="cv">
+         <font>
+            <Font name="Arial Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="325.0" layoutY="145.0" text="Diplome">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="upload" layoutX="501.0" layoutY="359.0" mnemonicParsing="false" onAction="#Upload" prefHeight="40.0" prefWidth="99.0" style="-fx-background-color: black;" text="Upload" textFill="WHITE" />
+      <AnchorPane layoutY="1.0" prefHeight="409.0" prefWidth="285.0" style="-fx-background-color: #449bc9 #449bc9;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="97.0" layoutY="243.0" text="SIGN UP " textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="91.0" fitWidth="240.0" layoutX="54.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Desktop/logodoc.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <TextField fx:id="spec_txt" layoutX="429.0" layoutY="75.0" />
+      <TextField fx:id="dep_txt" layoutX="429.0" layoutY="148.0" />
+      <Button fx:id="cv_file" layoutX="434.0" layoutY="229.0" mnemonicParsing="false" onAction="#file" prefHeight="26.0" prefWidth="139.0" text="Uploadcv" />
+      <Button fx:id="back" layoutX="285.0" layoutY="366.0" mnemonicParsing="false" onAction="#backLogin" prefHeight="32.0" prefWidth="90.0" style="-fx-background-color: black;" text="Back" textFill="WHITE" />
+   </children>
+</AnchorPane>

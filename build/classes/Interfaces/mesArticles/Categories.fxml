@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #F5F5F5;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CategorieController">
+   <children>
+      <AnchorPane layoutX="8.0" prefHeight="81.0" prefWidth="1163.0">
+         <children>
+            <TextField layoutX="21.0" layoutY="25.0" prefHeight="41.0" prefWidth="324.0" promptText="Chercher dans doctourna" style="-fx-background-radius: 11 11 11 11; -fx-background-color: #EEEEEE;" />
+            
+        
+         </children></AnchorPane>
+      <Pane fx:id="boxAjoutArticle" layoutX="23.0" layoutY="165.0" prefHeight="226.0" prefWidth="752.0" style="-fx-background-color: white; -fx-background-radius: 8;" styleClass="boxAjoutArticle" stylesheets="@AjoutArticle.css">
+         <children>
+            <TextField fx:id="titre" layoutX="21.0" layoutY="104.0" prefHeight="46.0" prefWidth="241.0" promptText="Ajouter le titre" style="-fx-background-radius: 5; -fx-background-color: #EEEEEE;" />
+            <Button fx:id="image" layoutX="407.0" layoutY="101.0" mnemonicParsing="false" onAction="#uploadImage" prefHeight="46.0" prefWidth="241.0" style="-fx-text-fill: #9F38B4; -fx-background-color: #EEEEEE;" text="Ajouter une photo" />
+            <Button layoutX="21.0" layoutY="166.0" mnemonicParsing="false" onAction="#AjoutCategorie" prefHeight="46.0" prefWidth="241.0" style="-fx-background-radius: 4; -fx-background-color: #9F38B4;" text="AJOUTER UN ARTICLE" textFill="WHITE">
+               <font>
+                  <Font name="Roboto Black" size="15.0" />
+               </font>
+            </Button>
+            <Text fill="#b1b1b1" layoutX="25.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom Categorie">
+               <font>
+                  <Font name="Roboto Black" size="15.0" />
+               </font>
+            </Text>
+            <Text fill="#b1b1b1" layoutX="407.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image Categorie">
+               <font>
+                  <Font name="Roboto Black" size="15.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane fx:id="BoxAdminDashboard" layoutX="42.0" layoutY="123.0" prefHeight="97.0" prefWidth="714.0" style="-fx-background-color: #9F38B4; -fx-background-radius: 8;" styleClass="BoxAdminDashboard" stylesheets="@MesArticle.css">
+         <children>
+            <Text fill="WHITE" layoutX="14.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-style: toUpperCase;" text="AJOUTER UN ARTICLE" textAlignment="CENTER" wrappingWidth="210.00003051757812">
+               <font>
+                  <Font name="Roboto Medium" size="20.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="14.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-style: toUpperCase;" text="Ajouter une Categorie" textAlignment="CENTER" wrappingWidth="174.99998831748962">
+               <font>
+                  <Font name="Roboto Thin" size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane fx:id="boxAjoutArticle1" layoutX="800.0" layoutY="173.0" prefHeight="217.0" prefWidth="371.0" style="-fx-background-color: white; -fx-background-radius: 8;" styleClass="boxAjoutArticle" stylesheets="@AjoutArticle.css">
+         <children>
+            <Label fx:id="NomCatTop" layoutX="105.0" layoutY="97.0" text="Medecine dentaire">
+               <font>
+                  <Font name="Roboto Light" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="NmbrCatTop" layoutX="123.0" layoutY="147.0" text="4" textFill="#b1b1b1">
+               <font>
+                  <Font name="Roboto Black" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="135.0" layoutY="147.0" text="ARTICLES/MOIS" textFill="#b1b1b1">
+               <font>
+                  <Font name="Roboto Black" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="boxAjoutArticle2" layoutX="23.0" layoutY="466.0" prefHeight="226.0" prefWidth="752.0" style="-fx-background-color: white; -fx-background-radius: 8;" styleClass="boxAjoutArticle" stylesheets="@AjoutArticle.css">
+         <children>
+            <TableView fx:id="tableview1" layoutX="19.0" prefHeight="226.0" prefWidth="714.0" style="-fx-border-color: white;">
+              <columns>
+                <TableColumn fx:id="imagetab1" prefWidth="252.0" text="image" />
+                <TableColumn fx:id="categorietab1" prefWidth="303.0" text="categorie" />
+                  <TableColumn fx:id="action" prefWidth="151.0" text="action" />
+              </columns>
+            </TableView>
+         </children></Pane>
+      <Pane layoutX="42.0" layoutY="433.0" prefHeight="60.0" prefWidth="714.0" style="-fx-background-color: #9F38B4; -fx-background-radius: 8;" styleClass="BoxAdminDashboard" stylesheets="@MesArticle.css">
+         <children>
+            <Text fill="WHITE" layoutX="14.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image Categorie" wrappingWidth="143.00003051757812">
+               <font>
+                  <Font name="Roboto Medium" size="18.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="285.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom Categorie" wrappingWidth="143.00003051757812">
+               <font>
+                  <Font name="Roboto Medium" size="18.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="536.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Action" textAlignment="CENTER" wrappingWidth="143.00003051757812">
+               <font>
+                  <Font name="Roboto Medium" size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane fx:id="boxAjoutArticle11" layoutX="800.0" layoutY="466.0" prefHeight="226.0" prefWidth="371.0" style="-fx-background-color: white; -fx-background-radius: 8;" styleClass="boxAjoutArticle" stylesheets="@AjoutArticle.css">
+         <children>
+            <TableView fx:id="tableview2" layoutX="28.0" layoutY="1.0" prefHeight="217.0" prefWidth="324.0">
+               <columns>
+                  <TableColumn fx:id="imagetab2" prefWidth="111.0" text="Image" />
+                  <TableColumn fx:id="categorietab2" minWidth="0.0" prefWidth="113.0" text="categorie" />
+                  <TableColumn fx:id="ArticleMois" prefWidth="99.0" text="ArticleMois" />
+               </columns>
+            </TableView>
+         </children></Pane>
+      <Pane fx:id="BoxAdminDashboardtop" layoutX="828.0" layoutY="434.0" prefHeight="60.0" prefWidth="323.0" style="-fx-background-color: #9F38B4; -fx-background-radius: 8;" styleClass="BoxAdminDashboard" stylesheets="@MesArticle.css">
+         <children>
+            <Text fill="WHITE" layoutX="5.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image Categorie" wrappingWidth="143.00003051757812">
+               <font>
+                  <Font name="Roboto Medium" size="14.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="120.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom Categorie" wrappingWidth="124.00003051757812">
+               <font>
+                  <Font name="Roboto Medium" size="14.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="231.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Article/Mois" textAlignment="CENTER" wrappingWidth="89.99996960163116">
+               <font>
+                  <Font name="Roboto Medium" size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane fx:id="boxAjoutArticle12" layoutX="905.0" layoutY="91.0" prefHeight="161.0" prefWidth="161.0" style="-fx-background-color: white; -fx-background-radius: 100;" styleClass="boxAjoutArticle" stylesheets="@AjoutArticle.css">
+         <children>
+            <ImageView fx:id="imageTop" fitHeight="169.0" fitWidth="161.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </Pane>
+      <Button fx:id="telechargerDATA" layoutX="42.0" layoutY="81.0" mnemonicParsing="false" onAction="#telechargerDATAPDF" prefHeight="32.0" prefWidth="133.0" style="-fx-background-color: #9F38B4; -fx-background-radius: 3;" styleClass="telechargerDATA" stylesheets="@MesArticle.css" text="Telecharger DATA" />
+   </children>
+</AnchorPane>

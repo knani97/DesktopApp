@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="486.0" prefWidth="1103.0" style="-fx-background-color: #F5F5F5;" stylesheets="@../doctourna.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="doctourna.controllers.PriseRDVController">
+   <children>
+      <Pane fx:id="boxAjoutArticle" prefHeight="495.0" prefWidth="1138.0" style="-fx-background-color: white; -fx-background-radius: 8;" styleClass="boxAjoutArticle">
+         <children>
+            <Pane prefHeight="81.0" prefWidth="1138.0" style="-fx-background-color: #4A90E2; -fx-background-radius: 8 8 0px 0;">
+               <children>
+                  <Text fill="WHITE" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-style: toUpperCase;" text="PRISE RDV" textAlignment="CENTER" wrappingWidth="1138.0000305175781">
+                     <font>
+                        <Font name="Roboto Medium" size="27.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Button fx:id="btnClick" layoutX="895.0" layoutY="420.0" mnemonicParsing="false" onAction="#display" prefHeight="41.0" prefWidth="216.0" style="-fx-background-radius: 8; -fx-background-color: #4A90E2;" text="Valider" textFill="WHITE">
+               <font>
+                  <Font name="Roboto Black" size="15.0" />
+               </font></Button>
+            <ComboBox fx:id="chcBoxDate" layoutX="26.0" layoutY="124.0" prefHeight="41.0" prefWidth="451.0" promptText="Veuillez séléctionner une date" style="-fx-background-color: #EEEEEE;" visibleRowCount="20" />
+            <Label layoutX="681.0" layoutY="114.0" text="Médecins" />
+            <JFXListView fx:id="lstViewMed" layoutX="767.0" layoutY="109.0" prefHeight="278.0" prefWidth="290.0" />
+            <JFXTextArea fx:id="txtAreaDesc" layoutX="26.0" layoutY="199.0" prefHeight="212.0" prefWidth="463.0" promptText="Description..." style="-fx-border-color: rgba(229,0,0,0.3); -fx-background-color: white;" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="531.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/rdv.png" />
+               </image>
+            </ImageView>
+            <JFXCheckBox fx:id="chcBox1" layoutX="639.0" layoutY="165.0" onAction="#resetMeds" selected="true" text="Psychiatre" />
+            <JFXCheckBox fx:id="chcBox2" layoutX="639.0" layoutY="199.0" onAction="#resetMeds" selected="true" text="Chirirugien" />
+            <JFXCheckBox fx:id="chcBox3" layoutX="639.0" layoutY="237.0" onAction="#resetMeds" selected="true" text="Cardiologue" />
+            <JFXCheckBox fx:id="chcBox4" layoutX="639.0" layoutY="275.0" onAction="#resetMeds" selected="true" text="Dermatologue" />
+            <JFXTextField fx:id="txtFieldNum" layoutX="26.0" layoutY="429.0" prefHeight="31.0" prefWidth="463.0" promptText="Numéro (Facultatif)" style="-fx-background-color: #eeeeee;" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="DOCTOURNAPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>doctourna.models.Calendrier_1</class>
+    <class>doctourna.models.Disponibilite</class>
+    <class>doctourna.models.Cv</class>
+    <class>doctourna.models.Rdv</class>
+    <class>doctourna.models.User</class>
+    <class>doctourna.models.Tache</class>
+    <class>doctourna.models.Article</class>
+    <class>doctourna.models.Fiche</class>
+    <class>doctourna.models.Commentaires</class>
+    <class>doctourna.models.Post</class>
+    <class>doctourna.models.Pharmacie</class>
+    <class>doctourna.models.Commande</class>
+    <class>doctourna.models.Reagit</class>
+    <class>doctourna.models.Video</class>
+    <class>doctourna.models.Comment</class>
+    <class>doctourna.models.ArticleCat</class>
+    <class>doctourna.models.Panier</class>
+    <class>doctourna.models.Medicament</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/doctourna?zeroDateTimeBehavior=CONVERT_TO_NULL&amp;serverTimezone=UTC"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value=""/>
+    </properties>
+  </persistence-unit>
+</persistence>

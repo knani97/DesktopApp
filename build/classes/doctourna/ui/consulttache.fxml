@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXColorPicker?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="doctourna.controllers.ConsultTacheController">
+    <stylesheets>
+        <URL value="@consulttache.css" />
+    </stylesheets>
+   <children>
+      <Label layoutX="113.0" layoutY="78.0" text="Libellé" />
+      <Label layoutX="80.0" layoutY="116.0" text="Description" />
+      <Label layoutX="113.0" layoutY="222.0" text="Date" />
+      <Label layoutX="105.0" layoutY="292.0" text="Couleur" />
+      <Label layoutX="115.0" layoutY="333.0" text="Type" />
+      <TextFlow fx:id="txtAreaDesc" layoutX="180.0" layoutY="116.0" prefHeight="85.0" prefWidth="283.0" />
+      <Text fx:id="txtLibelle" layoutX="178.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text fx:id="txtDate" layoutX="178.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Label fx:id="txtType" layoutX="180.0" layoutY="333.0" style="-fx-font-size: 20; -fx-font-family: Arial; fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);" text="Text" textFill="WHITE" />
+      <Label layoutX="109.0" layoutY="257.0" text="Durée" />
+      <Text fx:id="txtDuree" layoutX="178.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <JFXColorPicker fx:id="clrPickerCouleur" layoutX="178.0" layoutY="287.0" />
+   </children>
+</AnchorPane>

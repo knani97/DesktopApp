@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="358.0" prefWidth="561.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pipharmacie.AcceuilController">
+    <stylesheets>
+        <URL value="@acceuil.css" />
+    </stylesheets>
+   <children>
+      <ImageView fitHeight="358.0" fitWidth="600.0" layoutX="-4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/acceuil.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="back" layoutX="101.0" layoutY="131.0" mnemonicParsing="false" onAction="#versBack" prefHeight="65.0" prefWidth="139.0" style="-fx-background-color: #ffff;" styleClass="combo" text="Admin" textFill="#2261bd">
+         <font>
+            <Font name="Bookman Old Style Bold" size="22.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="front" layoutX="309.0" layoutY="132.0" mnemonicParsing="false" onAction="#versFront" prefHeight="58.0" prefWidth="139.0" style="-fx-background-color: #ffffff;" styleClass="combo" text="Patient" textFill="#2261bd">
+         <font>
+            <Font name="Bookman Old Style Bold" size="23.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <ImageView fx:id="anim" fitHeight="132.0" fitWidth="116.0" layoutX="221.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/pharmacie.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

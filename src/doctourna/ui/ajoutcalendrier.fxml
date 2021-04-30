@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXColorPicker?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="305.0" prefWidth="976.0" style="-fx-background-color: #F5F5F5;" stylesheets="@../doctourna.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="doctourna.controllers.ajoutCalendrierController">
+   <children>
+      <Pane fx:id="boxAjoutArticle" layoutX="2.0" prefHeight="376.0" prefWidth="1138.0" style="-fx-background-color: white; -fx-background-radius: 8;" styleClass="boxAjoutArticle">
+         <children>
+            <Pane prefHeight="81.0" prefWidth="1138.0" style="-fx-background-color: #4A90E2; -fx-background-radius: 8 8 0px 0;">
+               <children>
+                  <Text fx:id="txtTitle" fill="WHITE" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-style: toUpperCase;" text="AJOUTER UN CALENDRIER" textAlignment="CENTER" wrappingWidth="1138.0000305175781">
+                     <font>
+                        <Font name="Roboto Medium" size="27.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <ComboBox fx:id="chcTimezone" layoutX="26.0" layoutY="202.0" prefHeight="41.0" prefWidth="451.0" promptText="Timezone" style="-fx-background-color: #EEEEEE;" visibleRowCount="20" />
+            <Button fx:id="btnClick" layoutX="889.0" layoutY="273.0" mnemonicParsing="false" onAction="#display" prefHeight="41.0" prefWidth="216.0" style="-fx-background-radius: 8; -fx-background-color: #4A90E2;" text="AJOUTER CALENDRIER" textFill="WHITE">
+               <font>
+                  <Font name="Roboto Black" size="15.0" />
+               </font></Button>
+            <ComboBox fx:id="chcFormat" layoutX="26.0" layoutY="124.0" prefHeight="41.0" prefWidth="451.0" promptText="Format" style="-fx-background-color: #EEEEEE;" visibleRowCount="20" />
+            <JFXColorPicker fx:id="pickrClr" layoutX="765.0" layoutY="124.0" />
+            <Label fx:id="lblCoul" layoutX="683.0" layoutY="129.0" text="Couleur" />
+            <JFXCheckBox fx:id="chbEmail" layoutX="683.0" layoutY="192.0" text="Option Email" />
+            <Text fx:id="txtExit" layoutX="221.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30; -fx-fill: blue;" text="Cliquer sur le bouton pour consulter votre calendrier" />
+            <JFXButton fx:id="btnConsult" layoutX="527.0" layoutY="198.0" onAction="#showCal" style="-fx-background-color: grey;" text="Consulter" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

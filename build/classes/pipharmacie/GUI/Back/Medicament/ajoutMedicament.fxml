@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="485.0" prefWidth="563.0" style="-fx-background-color: white;" stylesheets="@ajoutMedicament.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pipharmacie.GUI.Back.Medicament.AjoutMedicamentController">
+   <children>
+      <Pane layoutX="16.0" layoutY="93.0" prefHeight="237.0" prefWidth="525.0">
+         <children>
+            <Label layoutX="305.0" layoutY="26.0" text="Nom:" textFill="GREY">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="72.0" layoutY="83.0" text="Fourniseur:" textFill="GREY">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="300.0" layoutY="83.0" text="Prix achat:" textFill="GREY">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="69.0" layoutY="147.0" text="Poids:" textFill="GREY">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="310.0" layoutY="147.0" prefHeight="17.0" prefWidth="57.0" text="Image :" textFill="GREY">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Button fx:id="image" layoutX="305.0" layoutY="168.0" mnemonicParsing="false" onAction="#upload" prefHeight="25.0" prefWidth="140.0" style="-fx-background-color: #9F38B4;" styleClass="combo" text="Uplaod image" />
+            <TextField fx:id="nom" layoutX="301.0" layoutY="53.0" />
+            <TextField fx:id="fourniseur" layoutX="72.0" layoutY="110.0" />
+            <TextField fx:id="prix" layoutX="301.0" layoutY="110.0" />
+            <TextField fx:id="poids" layoutX="72.0" layoutY="168.0" />
+            <ComboBox fx:id="categorie" layoutX="71.0" layoutY="53.0" prefWidth="150.0" style="-fx-background-color: #9F38B4;" styleClass="combo" stylesheets="@medicament.css" />
+            <Label layoutX="73.0" layoutY="26.0" text="Catégorie:" textFill="GREY">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Button fx:id="ajouter" layoutX="32.0" layoutY="361.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="35.0" prefWidth="96.0" style="-fx-background-color: #9F38B4; -fx-background-radius: none;" styleClass="combo" text="Ajouter">
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/ajout.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="retour" layoutX="40.0" layoutY="409.0" mnemonicParsing="false" onAction="#retour" style="-fx-background-color: #9F38B4; -fx-background-radius: 0;" styleClass="combo" text="retour">
+         <graphic>
+            <ImageView fitHeight="29.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/retour.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Pane fx:id="BoxAdminDashboard" layoutX="56.0" layoutY="59.0" prefHeight="49.0" prefWidth="445.0" style="-fx-background-color: #9F38B4; -fx-background-radius: 8;" styleClass="BoxAdminDashboard" stylesheets="@../../../../../../../Documents/NetBeansProjects/Pharmacie/PharmacieNew/Downloads/pidev%20(2)/pidev/src/Interfaces/mesArticles/MesArticle.css">
+         <children>
+            <Text fill="WHITE" layoutX="46.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-style: toUpperCase;" text="AJOUTER UN MEDICAMENT" textAlignment="CENTER" wrappingWidth="309.0000305175781">
+               <font>
+                  <Font name="Roboto Medium" size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <ImageView fx:id="img" fitHeight="107.0" fitWidth="169.0" layoutX="288.0" layoutY="378.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>

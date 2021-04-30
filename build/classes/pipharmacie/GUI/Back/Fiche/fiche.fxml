@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="590.0" prefWidth="764.0" style="-fx-background-color: white;" styleClass="column-header-background" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pipharmacie.GUI.Back.Fiche.FicheController">
+    <stylesheets>
+        <URL value="@fiche.css" />
+    </stylesheets>
+   <children>
+      <TableView fx:id="fiches" layoutX="36.0" layoutY="386.0" onMouseClicked="#afficherDetail" prefHeight="187.0" prefWidth="526.0" styleClass="column-header-background">
+        <columns>
+          <TableColumn fx:id="nomCol" prefWidth="93.0" text="Medicament" />
+          <TableColumn fx:id="quantiteCol" prefWidth="101.0" text="Quantité" />
+            <TableColumn fx:id="prixCol" prefWidth="116.0" text="Prix vente" />
+            <TableColumn fx:id="colU" prefWidth="215.0" text="Utilisation" />
+        </columns>
+      </TableView>
+      <Pane layoutX="28.0" layoutY="51.0" prefHeight="291.0" prefWidth="663.0">
+         <children>
+            <ComboBox fx:id="medicaments" layoutX="11.0" layoutY="66.0" prefWidth="150.0" style="-fx-background-color: #9F38B4;" styleClass="combo" />
+            <Spinner fx:id="quantite" layoutX="15.0" layoutY="141.0" prefHeight="25.0" prefWidth="141.0" />
+            <Label layoutX="11.0" layoutY="40.0" text="Medicament :" textFill="GREY">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="17.0" layoutY="105.0" text="Quantité :" textFill="GREY">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="prix" layoutX="11.0" layoutY="205.0" />
+            <Label layoutX="17.0" layoutY="172.0" text="Prix vente :" textFill="GREY">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="240.0" layoutY="40.0" text="Utilisation : " textFill="GREY">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="u" layoutX="233.0" layoutY="66.0" prefHeight="151.0" prefWidth="211.0" />
+            <Button fx:id="ajouter" layoutX="28.0" layoutY="245.0" mnemonicParsing="false" onAction="#ajouter" style="-fx-background-color: #9F38B4; -fx-background-radius: 0;" styleClass="combo" text="Ajouter">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/ajout.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="modifier" layoutX="224.0" layoutY="245.0" mnemonicParsing="false" onAction="#modifier" style="-fx-background-color: #9F38B4; -fx-background-radius: 0;" styleClass="combo" text="Modifier">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/edit.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="quantites" layoutX="397.0" layoutY="244.0" mnemonicParsing="false" onAction="#quantite" prefHeight="35.0" prefWidth="94.0" style="-fx-background-color: #9F38B4; -fx-background-radius: 0;" styleClass="combo" text="Quantité">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/ajout.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="pdf" layoutX="572.0" layoutY="27.0" mnemonicParsing="false" onAction="#pdf" style="-fx-background-color: #9F38B4; -fx-background-radius: 0;" styleClass="combo" text="Exporter en PDF" />
+         </children>
+      </Pane>
+      <Button fx:id="supprimer" layoutX="691.0" layoutY="528.0" mnemonicParsing="false" onAction="#supprimer" style="-fx-background-color: #9F38B4; -fx-background-radius: 0;" styleClass="combo">
+         <graphic>
+            <ImageView fitHeight="59.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/delete.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="retour" layoutX="634.0" layoutY="529.0" mnemonicParsing="false" onAction="#retour" style="-fx-background-color: #9F38B4; -fx-background-radius: 0;" styleClass="combo">
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/retour.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Pane fx:id="BoxAdminDashboard" layoutX="20.0" layoutY="25.0" prefHeight="52.0" prefWidth="519.0" style="-fx-background-color: #9F38B4; -fx-background-radius: 8;" styleClass="BoxAdminDashboard" stylesheets="@../../../../../../../Documents/NetBeansProjects/Pharmacie/PharmacieNew/Downloads/pidev%20(2)/pidev/src/Interfaces/mesArticles/MesArticle.css">
+         <children>
+            <Text fill="WHITE" layoutX="14.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-style: toUpperCase;" text="AJOUTER UNE FICHE" textAlignment="CENTER" wrappingWidth="210.00003051757812">
+               <font>
+                  <Font name="Roboto Medium" size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

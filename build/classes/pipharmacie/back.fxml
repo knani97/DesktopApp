@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="392.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pipharmacie.BackController">
+    <stylesheets>
+        <URL value="@back.css" />
+    </stylesheets>
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="632.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/fond.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="pharmacie" layoutX="82.0" layoutY="113.0" mnemonicParsing="false" onAction="#versPharmacie" prefHeight="66.0" prefWidth="191.0" style="-fx-background-color: #fff;" text="Pharmacies" textFill="#2261bd">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/pharmacie.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Bookman Old Style Bold" size="18.0" />
+         </font></Button>
+      <Button fx:id="medicament" layoutX="83.0" layoutY="214.0" mnemonicParsing="false" onAction="#versMedicament" prefHeight="66.0" prefWidth="191.0" style="-fx-background-color: #fff;" text="Médicaments" textFill="#2261bd">
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/medicament.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Bookman Old Style Bold" size="18.0" />
+         </font></Button>
+      <Button fx:id="retour" layoutX="21.0" layoutY="348.0" mnemonicParsing="false" onAction="#retour" prefHeight="35.0" prefWidth="75.0" style="-fx-background-color: white; -fx-background-radius: 3;" styleClass="combo" text="retour" textFill="#2261bd" />
+   </children>
+</AnchorPane>

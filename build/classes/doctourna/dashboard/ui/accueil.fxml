@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="655.0" prefWidth="963.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="doctourna.dashboard.controllers.AccueilController">
+    <stylesheets>
+        <URL value="@accueil.css" />
+    </stylesheets>
+   <children>
+      <ImageView fitHeight="322.0" fitWidth="963.0" layoutX="-1.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/dashboard_info.PNG" />
+         </image>
+      </ImageView>
+      <Label layoutX="43.0" layoutY="309.0" prefHeight="66.0" prefWidth="149.0" style="-fx-font-size: 30;" text="Infos:" />
+      <Label layoutX="144.0" layoutY="405.0" style="-fx-font-size: 20;" text="RDVs pris: " />
+      <Label layoutX="144.0" layoutY="435.0" style="-fx-font-size: 20;" text="Articles:" />
+      <Label layoutX="144.0" layoutY="465.0" style="-fx-font-size: 20;" text="Vidéos:" />
+      <Label layoutX="144.0" layoutY="495.0" style="-fx-font-size: 20;" text="Médicaments: " />
+      <Label layoutX="144.0" layoutY="525.0" style="-fx-font-size: 20;" text="Pharmacies: " />
+      <Text fx:id="nbRdvs" layoutX="239.0" layoutY="428.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20;" text="0" />
+      <Text fx:id="nbArts" layoutX="218.0" layoutY="458.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20;" text="0" />
+      <Text fx:id="nbVids" layoutX="213.0" layoutY="488.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20;" text="0" />
+      <Text fx:id="nbMeds" layoutX="273.0" layoutY="518.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20;" text="0" />
+      <Text fx:id="nbPharms" layoutX="254.0" layoutY="548.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20;" text="0" />
+      <Label layoutX="145.0" layoutY="375.0" style="-fx-font-size: 20;" text="Utilisateurs: " />
+      <Text fx:id="nbUsers" layoutX="254.0" layoutY="398.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20;" text="0" />
+      <JFXButton layoutX="733.0" layoutY="517.0" onAction="#btnUsers" prefHeight="47.0" prefWidth="137.0" style="-fx-background-color: #ebe6e6; -fx-background-radius: 20px;" text="Gestion Users" />
+   </children>
+</AnchorPane>

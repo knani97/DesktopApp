@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="559.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="doctourna.controllers.PlageHoraireController">
+    <stylesheets>
+        <URL value="@plagehoraire.css" />
+    </stylesheets>
+   <children>
+      <JFXListView fx:id="lstViewTaches" layoutX="210.0" layoutY="50.0" prefHeight="460.0" prefWidth="337.0" />
+      <Label layoutX="254.0" layoutY="14.0" text="Votre calendrier" />
+      <JFXCheckBox fx:id="chkBox1" layoutX="28.0" layoutY="50.0" onAction="#reinit" text="RDVs" />
+      <JFXCheckBox fx:id="chkBox2" layoutX="28.0" layoutY="71.0" onAction="#reinit" text="Prises Médicaments" />
+      <JFXCheckBox fx:id="chkBox3" layoutX="28.0" layoutY="92.0" onAction="#reinit" text="Personnelles" />
+      <JFXCheckBox fx:id="chkBox4" layoutX="28.0" layoutY="113.0" onAction="#reinit" text="Disponibilités" />
+      <JFXCheckBox fx:id="chkBox5" layoutX="28.0" layoutY="134.0" onAction="#reinit" text="RDVs Persos" />
+      <JFXButton fx:id="btnTriDate" layoutX="30.0" layoutY="249.0" onAction="#triDate" prefHeight="31.0" prefWidth="90.0" style="-fx-background-color: lightblue;" text="Tri Date" />
+      <JFXButton fx:id="btnTriLibelle" layoutX="31.0" layoutY="291.0" onAction="#triLibelle" prefHeight="31.0" prefWidth="90.0" style="-fx-background-color: lightblue;" text="Tri Libelle" />
+      <JFXButton fx:id="btnTriDuree" layoutX="31.0" layoutY="333.0" onAction="#triDuree" prefHeight="31.0" prefWidth="90.0" style="-fx-background-color: lightblue;" text="Tri Durée" />
+      <JFXButton fx:id="btnAjout" layoutX="210.0" layoutY="510.0" onAction="#ajouter" text="Ajouter" />
+      <JFXButton fx:id="btnModif" layoutX="288.0" layoutY="510.0" onAction="#modifier" text="Modifier" />
+      <JFXButton fx:id="btnSupp" layoutX="379.0" layoutY="510.0" onAction="#supprimer" text="Supprimer" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,31 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 18 avr. 2021, 05:59:24
+    Author     : Lenovo
+*/
+.boxAjoutArticle{
+   -fx-effect: dropshadow(three-pass-box, #C0C0C0, 20, 0, 8,8);
+}
+.NotificationBtn{
+   -fx-effect: dropshadow(three-pass-box, #C0C0C0, 20, 0, 8,8);
+}
+.PanierBtn{
+   -fx-effect: dropshadow(three-pass-box, #C0C0C0, 20, 0, 8,8);
+}
+.PanierBtn{
+   -fx-effect: dropshadow(three-pass-box, #C0C0C0, 20, 0, 8,8);
+}
+.BoxUserConnect{
+   -fx-effect: dropshadow(three-pass-box, #C0C0C0, 20, 0, 8,8);
+}
+.BoxUserWhiteConnect{
+   -fx-effect: dropshadow(three-pass-box, #3A3A3A, 30, 0, 4,0);
+}
+.btnNews{
+   -fx-effect: dropshadow(three-pass-box, #C0C0C0, 20, 0, 10,10);
+}
+

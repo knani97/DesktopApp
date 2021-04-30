@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="477.0" prefWidth="1098.0" style="-fx-background-color: #F5F5F5;" stylesheets="@../doctourna.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="doctourna.controllers.AjoutDispoController">
+   <children>
+      <Pane fx:id="boxAjoutArticle" prefHeight="495.0" prefWidth="1138.0" style="-fx-background-color: white; -fx-background-radius: 8;" styleClass="boxAjoutArticle">
+         <children>
+            <Pane prefHeight="81.0" prefWidth="1138.0" style="-fx-background-color: #4A90E2; -fx-background-radius: 8 8 0px 0;">
+               <children>
+                  <Text fill="WHITE" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-style: toUpperCase;" text="AJOUT DES DISPONIBILITES" textAlignment="CENTER" wrappingWidth="1138.0000305175781">
+                     <font>
+                        <Font name="Roboto Medium" size="27.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Button fx:id="btnClick" layoutX="895.0" layoutY="420.0" mnemonicParsing="false" onAction="#display" prefHeight="41.0" prefWidth="216.0" style="-fx-background-radius: 8; -fx-background-color: #4A90E2;" text="Ajouter" textFill="WHITE">
+               <font>
+                  <Font name="Roboto Black" size="15.0" />
+               </font></Button>
+            <JFXDatePicker fx:id="dteDateDebut" defaultColor="#003d91" layoutX="189.0" layoutY="129.0" prefHeight="31.0" prefWidth="139.0" />
+            <JFXTimePicker fx:id="tmeDateDebut" defaultColor="#003d91" layoutX="328.0" layoutY="130.0" prefHeight="31.0" prefWidth="126.0" />
+            <Label layoutX="87.0" layoutY="136.0" text="Date Début :" />
+            <JFXDatePicker fx:id="dteDateFin" defaultColor="#940000" layoutX="660.0" layoutY="128.0" prefHeight="31.0" prefWidth="139.0" />
+            <JFXTimePicker fx:id="tmeDateFin" defaultColor="#940000" layoutX="799.0" layoutY="129.0" prefHeight="31.0" prefWidth="126.0" />
+            <Label layoutX="558.0" layoutY="135.0" text="Date Fin : " />
+            <Label layoutX="88.0" layoutY="238.0" text="Durée RDV :" />
+            <JFXTextField fx:id="txtFldDureeRDV" layoutX="189.0" layoutY="232.0" text="00:30:00" />
+            <Label layoutX="546.0" layoutY="238.0" text="Durée Pause :" />
+            <JFXTextField fx:id="txtFldDureePause" layoutX="659.0" layoutY="232.0" text="00:00:00" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="184.0" layoutY="331.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/dispo.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

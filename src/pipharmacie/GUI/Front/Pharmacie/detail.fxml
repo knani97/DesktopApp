@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="335.0" style="-fx-background-color: #D6EAF8;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pipharmacie.GUI.Front.Pharmacie.DetailController">
+    <stylesheets>
+        <URL value="@detail.css" />
+    </stylesheets>
+   <children>
+      <ImageView fx:id="image" fitHeight="150.0" fitWidth="200.0" layoutX="78.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="50.0" layoutY="200.0" prefHeight="48.0" prefWidth="70.0" text="Nom :" textFill="#0d0101">
+         <font>
+            <Font name="Bookman Old Style Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="50.0" layoutY="248.0" prefHeight="48.0" prefWidth="70.0" text="Adresse :" textFill="#001e11">
+         <font>
+            <Font name="Bookman Old Style Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="43.0" layoutY="304.0" prefHeight="48.0" prefWidth="112.0" text="Gouvernourat :" textFill="#002213">
+         <font>
+            <Font name="Bookman Old Style Bold" size="14.0" />
+         </font></Label>
+      <Label fx:id="nom" layoutX="143.0" layoutY="200.0" prefHeight="48.0" prefWidth="70.0" text="Nom :" textFill="#5e5d94">
+         <font>
+            <Font name="Bookman Old Style Bold" size="14.0" />
+         </font></Label>
+      <Label fx:id="adresse" layoutX="143.0" layoutY="248.0" prefHeight="48.0" prefWidth="70.0" text="Adresse :" textFill="#5e5d94">
+         <font>
+            <Font name="Bookman Old Style Bold" size="14.0" />
+         </font></Label>
+      <Label fx:id="gouvernourat" layoutX="165.0" layoutY="304.0" prefHeight="48.0" prefWidth="128.0" text="Gouvernourat :" textFill="#5e5d94">
+         <font>
+            <Font name="Bookman Old Style Bold" size="14.0" />
+         </font></Label>
+   </children>
+</AnchorPane>

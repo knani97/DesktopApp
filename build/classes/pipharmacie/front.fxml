@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="341.0" prefWidth="617.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pipharmacie.FrontController">
+    <stylesheets>
+        <URL value="@front.css" />
+    </stylesheets>
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="623.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/front.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="pharmacie" layoutX="62.0" layoutY="81.0" mnemonicParsing="false" onAction="#versPharmacie" prefHeight="65.0" prefWidth="208.0" style="-fx-background-color: #FFFFFF;" text="Pharmacies" textFill="#1e6f39">
+         <graphic>
+            <ImageView fitHeight="61.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/pharmacie.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Bookman Old Style Bold" size="17.0" />
+         </font></Button>
+      <Button fx:id="medicament" layoutX="62.0" layoutY="182.0" mnemonicParsing="false" onAction="#versMedicament" prefHeight="69.0" prefWidth="208.0" style="-fx-background-color: #FFFFFF;" text="Médicaments" textFill="#c32f2f">
+         <graphic>
+            <ImageView fitHeight="70.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/medicament.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Bookman Old Style Bold" size="17.0" />
+         </font></Button>
+      <Button fx:id="retour" alignment="CENTER" layoutX="21.0" layoutY="337.0" mnemonicParsing="false" onAction="#retour" prefHeight="42.0" prefWidth="83.0" style="-fx-background-color: white; -fx-background-radius: 3;" styleClass="combo" text="Retour" textAlignment="CENTER" />
+   </children>
+</AnchorPane>

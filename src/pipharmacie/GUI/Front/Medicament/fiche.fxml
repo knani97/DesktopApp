@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="434.0" prefWidth="307.0" style="-fx-background-color: white;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pipharmacie.GUI.Front.Medicament.FicheController">
+    <stylesheets>
+        <URL value="@fiche.css" />
+    </stylesheets>
+    
+   <children>
+      <Label fx:id="med" layoutX="33.0" layoutY="139.0" text="Médicament :" textFill="#1c2833">
+         <font>
+            <Font name="Book Antiqua Bold" size="15.0" />
+         </font></Label>
+      <Label fx:id="qua" layoutX="34.0" layoutY="195.0" text="Quantité :" textFill="#1c2833">
+         <font>
+            <Font name="Book Antiqua Bold" size="15.0" />
+         </font></Label>
+      <Label fx:id="pri" layoutX="36.0" layoutY="256.0" text="Prix vente :" textFill="#1c2833">
+         <font>
+            <Font name="Book Antiqua Bold" size="15.0" />
+         </font></Label>
+      <Label fx:id="medicament" layoutX="141.0" layoutY="139.0" text="Médicament :" textFill="#5c5ccd">
+         <font>
+            <Font name="Book Antiqua Bold" size="15.0" />
+         </font></Label>
+      <Label fx:id="quantite" layoutX="141.0" layoutY="194.0" text="Quantité :" textFill="#5c5ccd">
+         <font>
+            <Font name="Book Antiqua Bold" size="15.0" />
+         </font></Label>
+      <Label fx:id="prix" layoutX="141.0" layoutY="256.0" text="Prix vente :" textFill="#5c5ccd">
+         <font>
+            <Font name="Book Antiqua Bold" size="15.0" />
+         </font></Label>
+      <Label fx:id="util" layoutX="36.0" layoutY="292.0" text="Utilisation : " textFill="#1c2833">
+         <font>
+            <Font name="Book Antiqua Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="utilisation" layoutX="141.0" layoutY="292.0" text="Utilisation : " textFill="#5c5ccd">
+         <font>
+            <Font name="Book Antiqua Bold" size="15.0" />
+         </font>
+      </Label>
+      <Pane prefHeight="74.0" prefWidth="306.0" style="-fx-background-color: #4A90E2; -fx-background-radius: 8 8 0px 0;">
+         <children>
+              <Text fx:id="txtTitle" fill="WHITE" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-style: toUpperCase;" text="Fiche" textAlignment="CENTER" wrappingWidth="306.0">
+                           <font>
+                              <Font name="Roboto Medium" size="27.0" />
+                           </font>
+                        </Text>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="514.0" prefWidth="1138.0" style="-fx-background-color: #f5f9ff;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="doctourna.controllers.HomeController">
+    <stylesheets>
+        <URL value="@home.css" />
+    </stylesheets>
+   <children>
+      <ImageView fitHeight="242.0" fitWidth="612.0" layoutX="42.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/description.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="278.0" fitWidth="365.0" layoutX="686.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/about.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="108.0" fitWidth="316.0" layoutX="321.0" layoutY="402.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/credits.PNG" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="109.0" layoutY="283.0" onAction="#display" prefHeight="37.0" prefWidth="93.0" style="-fx-background-color: #0073ff; -fx-border-radius: 20;" text="Plus →" textFill="WHITE" />
+   </children>
+</AnchorPane>

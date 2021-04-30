@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="806.0" style="-fx-background-color: white;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pipharmacie.GUI.Back.Medicament.MedicamentController">
+    <stylesheets>
+        <URL value="@medicament.css" />
+    </stylesheets>
+   <children>
+      <TableView fx:id="medicaments" layoutX="92.0" layoutY="397.0" onMouseClicked="#afficherDetail" prefHeight="192.0" prefWidth="574.0" styleClass="column-header">
+        <columns>
+          <TableColumn fx:id="nomCol" prefWidth="95.0" text="Nom" />
+          <TableColumn fx:id="fourniseurCol" prefWidth="95.0" text="Fourniseur" />
+            <TableColumn fx:id="prixCol" prefWidth="95.0" text="prix achat" />
+            <TableColumn fx:id="poidsCol" prefWidth="95.0" text="poids" />
+            <TableColumn fx:id="imgCol" prefWidth="95.0" text="Image" />
+            <TableColumn fx:id="categorieCol" prefWidth="95.0" text="Catégorie" />
+        </columns>
+      </TableView>
+      <Pane layoutX="32.0" layoutY="81.0" prefHeight="286.0" prefWidth="591.0">
+         <children>
+            <TextField fx:id="nom" layoutX="267.0" layoutY="85.0" />
+            <TextField fx:id="fourniseur" layoutX="48.0" layoutY="151.0" />
+            <TextField fx:id="prix" layoutX="257.0" layoutY="151.0" />
+            <Label layoutX="284.0" layoutY="51.0" text="Nom:" textFill="GREY">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="55.0" layoutY="124.0" text="Fourniseur:" textFill="GREY">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="276.0" layoutY="124.0" text="Prix achat:" textFill="GREY">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="54.0" layoutY="188.0" text="Poids:" textFill="GREY">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="274.0" layoutY="188.0" prefHeight="17.0" prefWidth="57.0" text="Image :" textFill="GREY">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="img" fitHeight="107.0" fitWidth="169.0" layoutX="416.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true" />
+            <ComboBox fx:id="categorie" layoutX="47.0" layoutY="85.0" prefWidth="150.0" style="-fx-background-color: #9F38B4;" styleClass="combo" stylesheets="@medicament.css" />
+            <Button fx:id="image" layoutX="250.0" layoutY="211.0" mnemonicParsing="false" onAction="#upload" prefHeight="25.0" prefWidth="140.0" style="-fx-background-color: #9F38B4;" styleClass="combo" text="Uplaod image" />
+            <TextField fx:id="poids" layoutX="48.0" layoutY="211.0" />
+            <Pane fx:id="BoxAdminDashboard" layoutX="21.0" layoutY="-15.0" prefHeight="59.0" prefWidth="548.0" style="-fx-background-color: #9F38B4; -fx-background-radius: 8;" styleClass="BoxAdminDashboard" stylesheets="@../../../../../../../Documents/NetBeansProjects/Pharmacie/PharmacieNew/Downloads/pidev%20(2)/pidev/src/Interfaces/mesArticles/MesArticle.css">
+               <children>
+                  <Text fill="WHITE" layoutX="14.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-style: toUpperCase;" text="Modifier un Medicament" textAlignment="CENTER" wrappingWidth="291.0000305175781">
+                     <font>
+                        <Font name="Roboto Medium" size="20.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+             <Button fx:id="modifier" layoutX="65.0" layoutY="246.0" mnemonicParsing="false" onAction="#modifier" prefHeight="31.0" prefWidth="126.0" style="-fx-background-radius: 4; -fx-background-color: #9F38B4;" text="MODIFIER" textFill="WHITE">
+               <font>
+                  <Font name="Roboto Black" size="15.0" />
+               </font>
+            </Button>
+            <Label layoutX="74.0" layoutY="51.0" text="Catégorie:" textFill="GREY">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+           
+                <Button fx:id="ajouter" layoutX="275.0" layoutY="246.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="21.0" prefWidth="90.0" style="-fx-background-radius: 4; -fx-background-color: #9F38B4;" text="Ajouter" textFill="WHITE">
+                     <font>
+                        <Font name="Roboto Black" size="15.0" />
+                     </font>
+                  </Button>
+            
+         </children>
+      </Pane>
+             <Button fx:id="supprimer" layoutX="678.0" layoutY="453.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="21.0" prefWidth="90.0" style="-fx-background-radius: 4; -fx-background-color: #9F38B4;" text="Supprimer" textFill="WHITE">
+               <font>
+                  <Font name="Roboto Black" size="15.0" />
+               </font>
+            </Button>
+      <Button fx:id="retour" layoutX="14.0" layoutY="556.0" mnemonicParsing="false" onAction="#retour" prefHeight="25.0" prefWidth="67.0" style="-fx-background-radius: 4; -fx-background-color: #9F38B4;" text="Retour" textFill="WHITE">
+               <font>
+                  <Font name="Roboto Black" size="15.0" />
+               </font>
+            </Button>
+   
+      <Label layoutX="246.0" layoutY="4.0" text="Médicaments" textFill="GREY">
+         <font>
+            <Font size="24.0" />
+         </font>
+         <graphic>
+            <ImageView fx:id="imgAnim" fitHeight="45.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/medicament.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Label>
+         <Button fx:id="ajoutcategorie" layoutX="623.0" layoutY="131.0" mnemonicParsing="false" onAction="#ajoutcategorie" prefHeight="37.0" prefWidth="126.0" style="-fx-background-radius: 4; -fx-background-color: #9F38B4;" text="Categorie" textFill="WHITE">
+              <graphic>
+            <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/ajout.png" />
+               </image>
+            </ImageView>
+         </graphic>  
+             <font>
+                  <Font name="Roboto Black" size="15.0" />
+               </font>
+            </Button>
+     
+      <Button fx:id="ajoutfiche" layoutX="623.0" layoutY="74.0" mnemonicParsing="false" onAction="#ajoutfiche" prefHeight="37.0" prefWidth="126.0" style="-fx-background-radius: 4; -fx-background-color: #9F38B4;" text="Fiche" textFill="WHITE">
+              <graphic>
+            <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/ajout.png" />
+               </image>
+            </ImageView>
+         </graphic>  
+             <font>
+                  <Font name="Roboto Black" size="15.0" />
+               </font>
+            </Button>
+      <Button fx:id="stat" layoutX="678.0" layoutY="504.0" mnemonicParsing="false" onAction="#stat" prefHeight="25.0" prefWidth="90.0" style="-fx-background-radius: 4; -fx-background-color: #9F38B4;" text="Statistique" textFill="WHITE">
+         <font>
+            <Font name="Roboto Black" size="15.0" />
+         </font>
+      </Button>
+     
+   </children>
+</AnchorPane>

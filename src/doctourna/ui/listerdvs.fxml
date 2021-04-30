@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="483.0" prefWidth="1131.0" style="-fx-background-color: #F5F5F5;" stylesheets="@../doctourna.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="doctourna.controllers.ListeRDVsController">
+   <children>
+      <Pane fx:id="boxAjoutArticle" prefHeight="495.0" prefWidth="1138.0" style="-fx-background-color: white; -fx-background-radius: 8;" styleClass="boxAjoutArticle">
+         <children>
+            <Pane prefHeight="81.0" prefWidth="1138.0" style="-fx-background-color: #4A90E2; -fx-background-radius: 8 8 0px 0;">
+               <children>
+                  <Text fill="WHITE" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-style: toUpperCase;" text="LISTE DES RDVS" textAlignment="CENTER" wrappingWidth="1138.0000305175781">
+                     <font>
+                        <Font name="Roboto Medium" size="27.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <JFXTreeTableView fx:id="treTableRDVs" layoutX="4.0" layoutY="81.0" prefHeight="412.0" prefWidth="1131.0" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

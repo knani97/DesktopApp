@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #F5F5F5;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ModArticleController">
+   <children>
+      <Text fill="WHITE" layoutX="909.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="107.98307228088379" />
+      <Pane fx:id="boxAjoutArticle" layoutX="14.0" layoutY="51.0" prefHeight="417.0" prefWidth="1138.0" style="-fx-background-color: white; -fx-background-radius: 8;" styleClass="boxAjoutArticle" stylesheets="@AjoutArticle.css">
+         <children>
+            <Pane prefHeight="81.0" prefWidth="1138.0" style="-fx-background-color: #4A90E2; -fx-background-radius: 8 8 0px 0;">
+               <children>
+                  <Text fill="WHITE" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-style: toUpperCase;" text="MODIFIER VOTRE ARTICLE" textAlignment="CENTER" wrappingWidth="1138.0000305175781">
+                     <font>
+                        <Font name="Roboto Medium" size="27.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <TextField fx:id="titre" layoutX="26.0" layoutY="124.0" prefHeight="41.0" prefWidth="451.0" promptText="Ajouter le titre" style="-fx-background-radius: 5; -fx-background-color: #EEEEEE;" />
+            <TextArea fx:id="text" layoutX="569.0" layoutY="124.0" prefHeight="194.0" prefWidth="537.0" promptText="Ajouter votre contenu" style="-fx-background-color: #EEEEEE; -fx-background-radius: 8;" />
+            <ComboBox fx:id="idCat" layoutX="26.0" layoutY="202.0" prefHeight="41.0" prefWidth="451.0" promptText="Choisir une catégorie" style="-fx-background-color: #EEEEEE;" visibleRowCount="20" />
+            <Button fx:id="image" layoutX="26.0" layoutY="275.0" mnemonicParsing="false" onAction="#uploadImage" prefHeight="41.0" prefWidth="451.0" style="-fx-text-fill: #4A90E2; -fx-background-color: #EEEEEE;" text="Ajouter une photo" />
+            <Button fx:id="ModBtn" layoutX="890.0" layoutY="343.0" mnemonicParsing="false" onAction="#ModifierArticle" prefHeight="41.0" prefWidth="216.0" style="-fx-background-radius: 8; -fx-background-color: #4A90E2;" text="MODIFIER L'ARTICLE" textFill="WHITE">
+               <font>
+                  <Font name="Roboto Black" size="15.0" />
+               </font></Button>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

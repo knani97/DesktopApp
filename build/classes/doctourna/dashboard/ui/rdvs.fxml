@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="585.0" prefWidth="919.0" style="-fx-background-color: rgba(0, 100, 100, 0);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="doctourna.dashboard.controllers.RDVsController">
+   <children>
+      <Pane fx:id="boxAjoutArticle2" layoutX="107.0" layoutY="103.0" prefHeight="439.0" prefWidth="752.0" style="-fx-background-color: white; -fx-background-radius: 8;" styleClass="boxAjoutArticle" stylesheets="@../../../../../../../../Downloads/pidev%20(2)/pidev/src/Interfaces/mesArticles/AjoutArticle.css">
+         <children>
+            <JFXTreeTableView fx:id="treTableRDVs" layoutY="-33.0" prefHeight="471.0" prefWidth="752.0" />
+         </children>
+      </Pane>
+      <Pane layoutX="126.0" layoutY="70.0" prefHeight="60.0" prefWidth="714.0" style="-fx-background-color: #9F38B4; -fx-background-radius: 8;" styleClass="BoxAdminDashboard" stylesheets="@../../../../../../../../Downloads/pidev%20(2)/pidev/src/Interfaces/mesArticles/MesArticle.css">
+         <children>
+            <Text fill="WHITE" layoutX="14.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" wrappingWidth="143.00003051757812">
+               <font>
+                  <Font name="Roboto Medium" size="18.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="133.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patient" wrappingWidth="143.00003051757812">
+               <font>
+                  <Font name="Roboto Medium" size="18.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="536.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Action" textAlignment="CENTER" wrappingWidth="143.00003051757812">
+               <font>
+                  <Font name="Roboto Medium" size="18.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="261.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Médecin" wrappingWidth="143.00003051757812">
+               <font>
+                  <Font name="Roboto Medium" size="18.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="404.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Etat" wrappingWidth="143.00003051757812">
+               <font>
+                  <Font name="Roboto Medium" size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <TextField fx:id="txtFieldSearch" layoutX="249.0" layoutY="14.0" onInputMethodTextChanged="#search" prefHeight="41.0" prefWidth="324.0" promptText="Username" style="-fx-background-radius: 11 11 11 11; -fx-background-color: #EEEEEE;" />
+      <Text layoutX="126.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 24; -fx-fill: blue;" text="RDVs Pris" />
+   </children>
+</AnchorPane>
